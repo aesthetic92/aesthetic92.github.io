@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C语言,语法," />
 
 
 
@@ -80,16 +80,25 @@
 
 
 
-<meta name="description">
+<meta name="description" content="%d,%f输入输出的问题1printf(&quot;%f&quot;, 8/5);
+1printf(&quot;%d&quot;, 8.0/5.0);
+这两句输出的结果有点意外，比如第一个输出的是0.000000，而8/5本来按整数的结果是1，原因是整数和浮点数的编码方式不一样，这个整数1存储到浮点数时，编码方式完全不一样，浮点数第一位是符号位，中间8位是阶码，后面23为是尾数.
+整数1按照浮点数解析表示：0 0000 0000 000">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C语言中有意思的问题">
 <meta property="og:url" content="http://yoursite.com/2014/06/06/C语言中有意思的问题/index.html">
 <meta property="og:site_name" content="Aesthetic92">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-04-24T03:29:03.562Z">
+<meta property="og:description" content="%d,%f输入输出的问题1printf(&quot;%f&quot;, 8/5);
+1printf(&quot;%d&quot;, 8.0/5.0);
+这两句输出的结果有点意外，比如第一个输出的是0.000000，而8/5本来按整数的结果是1，原因是整数和浮点数的编码方式不一样，这个整数1存储到浮点数时，编码方式完全不一样，浮点数第一位是符号位，中间8位是阶码，后面23为是尾数.
+整数1按照浮点数解析表示：0 0000 0000 000">
+<meta property="og:updated_time" content="2016-04-24T08:43:39.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言中有意思的问题">
-<meta name="twitter:description">
+<meta name="twitter:description" content="%d,%f输入输出的问题1printf(&quot;%f&quot;, 8/5);
+1printf(&quot;%d&quot;, 8.0/5.0);
+这两句输出的结果有点意外，比如第一个输出的是0.000000，而8/5本来按整数的结果是1，原因是整数和浮点数的编码方式不一样，这个整数1存储到浮点数时，编码方式完全不一样，浮点数第一位是符号位，中间8位是阶码，后面23为是尾数.
+整数1按照浮点数解析表示：0 0000 0000 000">
 
 
 
@@ -285,6 +294,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/C语言/" itemprop="url" rel="index">
+                    <span itemprop="name">C语言</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -324,7 +352,25 @@
       
 
       
-        
+        <h1 id="%d,%f输入输出的问题">%d,%f输入输出的问题</h1><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">printf</span>(<span class="string">"<span class="variable">%f</span>"</span>, <span class="number">8</span>/<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">printf</span>(<span class="string">"<span class="variable">%d</span>"</span>, <span class="number">8.0</span>/<span class="number">5.0</span>);</span><br></pre></td></tr></table></figure>
+<p>这两句输出的结果有点意外，比如第一个输出的是<code>0.000000</code>，而<code>8/5</code>本来按整数的结果是<code>1</code>，原因是整数和浮点数的编码方式不一样，这个整数1存储到浮点数时，编码方式完全不一样，浮点数第一位是符号位，中间<code>8</code>位是阶码，后面<code>23</code>为是尾数.</p>
+<p>整数1按照浮点数解析表示：<code>0 0000 0000 0000 0000 0000 0000 0000 001</code><br>                                表示成整数：<code>[1 + 2^23] * 2^(-127)</code>   很小的值</p>
+<p><code>Tips：</code>整数 / 整数 = 整数， 浮点数 / 浮点数 = 浮点数<br><a id="more"></a></p>
+<h1 id="i++_与_++i_的执行过程">i++ 与 ++i 的执行过程</h1><p>经常遇到一连串的 <code>i++</code> 或者 <code>++i</code> 相加，问最后执行的结果和 <code>i</code> 的值</p>
+<p><code>i.g：</code></p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int i = -1<span class="comment">;  </span></span><br><span class="line">int y = 0<span class="comment">;  </span></span><br><span class="line">y = i++ + ++i<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>分析一下它的汇编代码(没有经过优化):</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">subl    <span class="variable">$4</span>0, <span class="variable">%esp</span>              ; 分配<span class="number">40</span>字节  </span><br><span class="line">movl    <span class="variable">$1</span>, -<span class="number">16</span>(<span class="variable">%ebp</span>)          ; 存储 i  </span><br><span class="line">movl    <span class="variable">$0</span>, -<span class="number">12</span>(<span class="variable">%ebp</span>)          ; 存储 y  </span><br><span class="line">movl    -<span class="number">16</span>(<span class="variable">%ebp</span>), <span class="variable">%eax</span>        ; 这<span class="number">3</span>步执行 i++  </span><br><span class="line">leal    <span class="number">1</span>(<span class="variable">%eax</span>), <span class="variable">%edx</span>  </span><br><span class="line">movl    <span class="variable">%edx</span>, -<span class="number">16</span>(<span class="variable">%ebp</span>)  </span><br><span class="line">addl    <span class="variable">$1</span>, -<span class="number">16</span>(<span class="variable">%ebp</span>)          ; 这<span class="number">2</span>步执行 ++i  </span><br><span class="line">movl    -<span class="number">16</span>(<span class="variable">%ebp</span>), <span class="variable">%edx</span>  </span><br><span class="line">addl    <span class="variable">%eax</span>, <span class="variable">%edx</span>             ; 相加操作  </span><br><span class="line">movl    <span class="variable">%edx</span>, -<span class="number">12</span>(<span class="variable">%ebp</span>)        ; 结果写回 y</span><br></pre></td></tr></table></figure>
+<p>可以看出执行 <code>i++</code> 需要<code>3</code>步，执行 <code>++i</code> 需要<code>2</code>步，而且修改 <code>i</code> 值的位置是不一样的.<br>这也是为什么再写<code>for</code>循环的时候，<code>++i</code> 的效率会比 <code>i++</code> 高. </p>
+<h1 id="C语言中_*号的用途">C语言中 *号的用途</h1><p>在C语言中 <code>*</code> 号有三个用途</p>
+<ol>
+<li>乘号，用做乘法的运算，<code>i.g: 5*6</code>;</li>
+<li>申明一个指针，在定义指针变量时使用，<code>i.g: int *p</code>;</li>
+<li>间接运算符，取得指针所指向的内存中的值，<code>i.g: printf(&quot;%d&quot;, *p)</code>.</li>
+</ol>
+<p><code>Question:</code> 指针用来存储内存地址的，为什么还要分不同类型的指针？<br><code>Answer:</code> 因为指针变量存储的是一个内存空间的首地址（第一个字节的地址），但是这个空间占用了多少字节，用来存储什么类型的数，则是由指针的类型来标明的. 这样系统才知道应该取多少个连续内存作为一个数据.</p>
+
       
     </div>
     
@@ -362,6 +408,14 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C语言/" rel="tag">#C语言</a>
+          
+            <a href="/tags/语法/" rel="tag">#语法</a>
+          
+        </div>
       
 
       
@@ -453,7 +507,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -461,7 +515,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -470,7 +524,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -565,7 +619,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%d,%f输入输出的问题"><span class="nav-number">1.</span> <span class="nav-text">%d,%f输入输出的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#i++_与_++i_的执行过程"><span class="nav-number">2.</span> <span class="nav-text">i++ 与 ++i 的执行过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C语言中_*号的用途"><span class="nav-number">3.</span> <span class="nav-text">C语言中 *号的用途</span></a></li></ol></div>
             
           </div>
         </section>

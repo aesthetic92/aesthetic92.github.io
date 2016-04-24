@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Algorithm,去重,排序,数组," />
 
 
 
@@ -80,16 +80,34 @@
 
 
 
-<meta name="description">
+<meta name="description" content="Input:
+121020 40 32 67 40 20 89 300 400 15
+Ouput:
+115 20 32 40 67 89 300 400
+Methods: 
+
+先将这n个数字去重，再进行从小到大排序并输出，可以通过桶排序来解决. 时间复杂度是O(N+M).">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数组的去重与排序">
 <meta property="og:url" content="http://yoursite.com/2014/11/22/数组的去重与排序/index.html">
 <meta property="og:site_name" content="Aesthetic92">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-04-24T03:19:06.256Z">
+<meta property="og:description" content="Input:
+121020 40 32 67 40 20 89 300 400 15
+Ouput:
+115 20 32 40 67 89 300 400
+Methods: 
+
+先将这n个数字去重，再进行从小到大排序并输出，可以通过桶排序来解决. 时间复杂度是O(N+M).">
+<meta property="og:updated_time" content="2016-04-24T08:24:25.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数组的去重与排序">
-<meta name="twitter:description">
+<meta name="twitter:description" content="Input:
+121020 40 32 67 40 20 89 300 400 15
+Ouput:
+115 20 32 40 67 89 300 400
+Methods: 
+
+先将这n个数字去重，再进行从小到大排序并输出，可以通过桶排序来解决. 时间复杂度是O(N+M).">
 
 
 
@@ -285,6 +303,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -324,7 +373,22 @@
       
 
       
-        
+        <p><code>Input:</code></p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line"><span class="number">20 40 32 67</span> <span class="number">40 20 89 30</span><span class="number">0 400 15</span></span><br></pre></td></tr></table></figure>
+<p><code>Ouput:</code></p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">15 20 32 40</span> <span class="number">67 89 300</span> 400</span><br></pre></td></tr></table></figure>
+<p><code>Methods:</code> </p>
+<ol>
+<li>先将这<code>n</code>个数字去重，再进行从小到大排序并输出，可以通过桶排序来解决. 时间复杂度是<code>O(N+M)</code>. <a id="more"></a>
+</li>
+</ol>
+<p><code>Code:</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;  </span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdlib.h&gt;  </span></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span><br><span class="line"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> book[<span class="number">1001</span>];  </span><br><span class="line">    <span class="keyword">int</span> n, i, t;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">1001</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        book[i] = <span class="number">0</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);  </span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);  </span><br><span class="line">        book[t] = <span class="number">1</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">1001</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span>(<span class="number">1</span> == book[i])  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>, i);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    system(<span class="string">"pause"</span>);  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>先从小到大排序，比如用冒泡排序，输出结果的时候再去重. 时间复杂度由冒泡排序<code>O(N^2)</code> 和 读入输出都是<code>O(N)</code>，因此整个时间复杂度<code>O(N^2+2N)</code>，也即<code>O(N^2)</code>.<br><code>Code:</code></li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;  </span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;string.h&gt;  </span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdlib.h&gt;  </span></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span><br><span class="line"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> book[<span class="number">1001</span>];  </span><br><span class="line">    <span class="keyword">int</span> n, i, j, t;  </span><br><span class="line">  </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);  </span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;book[i]);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">/// Bubble sort  </span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n-<span class="number">1</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; n-i; ++j)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span> (book[j] &gt; book[j+<span class="number">1</span>])  </span><br><span class="line">            &#123;  </span><br><span class="line">                t = book[j];  </span><br><span class="line">                book[j] = book[j+<span class="number">1</span>];  </span><br><span class="line">                book[j+<span class="number">1</span>] = t;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d "</span>, book[<span class="number">0</span>]);  </span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt; n; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span>(book[i] != book[i-<span class="number">1</span>])  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>, book[i]);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    system(<span class="string">"pause"</span>);  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -362,6 +426,18 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag">#Algorithm</a>
+          
+            <a href="/tags/去重/" rel="tag">#去重</a>
+          
+            <a href="/tags/排序/" rel="tag">#排序</a>
+          
+            <a href="/tags/数组/" rel="tag">#数组</a>
+          
+        </div>
       
 
       
@@ -453,7 +529,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -461,7 +537,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -470,7 +546,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

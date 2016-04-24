@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Algorithm,k-means,数据挖掘,机器学习,算法,聚类," />
 
 
 
@@ -80,16 +80,20 @@
 
 
 
-<meta name="description">
+<meta name="description" content="最近做了聚类实验，就写了下K-Means算法，C语言实现.实验给出的数据集比较小,总共有11个：(2, 10), (2, 5), (8, 4), (5, 8), (7, 5), (6, 4), (1, 2), (4, 9), (7, 3), (1, 3), (3, 9)
+代码运行的聚类结果：Cluster-1： (2, 10),  (5, 8),  (4, 9),  (3, 9)Cluster-2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="k-means聚类算法的实现（C语言）">
 <meta property="og:url" content="http://yoursite.com/2014/11/14/k-means聚类算法的实现（C语言）/index.html">
 <meta property="og:site_name" content="Aesthetic92">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-04-24T03:18:27.330Z">
+<meta property="og:description" content="最近做了聚类实验，就写了下K-Means算法，C语言实现.实验给出的数据集比较小,总共有11个：(2, 10), (2, 5), (8, 4), (5, 8), (7, 5), (6, 4), (1, 2), (4, 9), (7, 3), (1, 3), (3, 9)
+代码运行的聚类结果：Cluster-1： (2, 10),  (5, 8),  (4, 9),  (3, 9)Cluster-2">
+<meta property="og:image" content="http://7xtbpn.com2.z0.glb.clouddn.com/kmean.png">
+<meta property="og:updated_time" content="2016-04-24T08:32:53.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k-means聚类算法的实现（C语言）">
-<meta name="twitter:description">
+<meta name="twitter:description" content="最近做了聚类实验，就写了下K-Means算法，C语言实现.实验给出的数据集比较小,总共有11个：(2, 10), (2, 5), (8, 4), (5, 8), (7, 5), (6, 4), (1, 2), (4, 9), (7, 3), (1, 3), (3, 9)
+代码运行的聚类结果：Cluster-1： (2, 10),  (5, 8),  (4, 9),  (3, 9)Cluster-2">
 
 
 
@@ -285,6 +289,49 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据挖掘/" itemprop="url" rel="index">
+                    <span itemprop="name">数据挖掘</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据挖掘/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据挖掘/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -324,7 +371,12 @@
       
 
       
-        
+        <p>最近做了聚类实验，就写了下<code>K-Means</code>算法，<code>C语言</code>实现.<br>实验给出的数据集比较小,总共有<code>11</code>个：<code>(2, 10), (2, 5), (8, 4), (5, 8), (7, 5), (6, 4), (1, 2), (4, 9), (7, 3), (1, 3), (3, 9)</code></p>
+<p>代码运行的聚类结果：<br><code>Cluster-1</code>： <code>(2, 10),  (5, 8),  (4, 9),  (3, 9)</code><br><code>Cluster-2</code>： <code>(8, 4),  (7, 5),  (6, 4),  (7, 3)</code><br><code>Cluster-3</code>： <code>(2, 5),  (1, 2),  (1, 3)</code></p>
+<p><code>Clementine</code>软件运行结果：<br><img src="http://7xtbpn.com2.z0.glb.clouddn.com/kmean.png" alt="k-means"><br><a id="more"></a></p>
+<p>可以看出与软件运行结果相比代码是正确的.</p>
+<figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">#</span><span class="preprocessor"><span class="keyword">include</span> &lt;stdio.h&gt;</span>  </span><br><span class="line"><span class="built_in">#</span><span class="preprocessor"><span class="keyword">include</span> &lt;string.h&gt;</span>  </span><br><span class="line"><span class="built_in">#</span><span class="preprocessor"><span class="keyword">include</span> &lt;stdlib.h&gt;</span>  </span><br><span class="line"><span class="built_in">#</span><span class="preprocessor"><span class="keyword">include</span> &lt;math.h&gt;</span>  </span><br><span class="line"><span class="built_in">#</span><span class="preprocessor"><span class="keyword">include</span> &lt;time.h&gt;</span>  </span><br><span class="line">  </span><br><span class="line"><span class="built_in">#</span>define N <span class="number">11</span>  </span><br><span class="line"><span class="built_in">#</span>define K <span class="number">3</span>  </span><br><span class="line">  </span><br><span class="line">typedef struct  </span><br><span class="line">&#123;  </span><br><span class="line">    float x;  </span><br><span class="line">    float y;  </span><br><span class="line">&#125;Point;  </span><br><span class="line">  </span><br><span class="line">int center[N];  <span class="comment">///  判断每个点属于哪个簇  </span></span><br><span class="line">  </span><br><span class="line">Point point[N] = &#123;  </span><br><span class="line">    &#123;<span class="number">2.0</span>, <span class="number">10.0</span>&#125;,  </span><br><span class="line">    &#123;<span class="number">2.0</span>, <span class="number">5.0</span>&#125;,  </span><br><span class="line">    &#123;<span class="number">8.0</span>, <span class="number">4.0</span>&#125;,  </span><br><span class="line">    &#123;<span class="number">5.0</span>, <span class="number">8.0</span>&#125;,  </span><br><span class="line">    &#123;<span class="number">7.0</span>, <span class="number">5.0</span>&#125;,  </span><br><span class="line">    &#123;<span class="number">6.0</span>, <span class="number">4.0</span>&#125;,  </span><br><span class="line">    &#123;<span class="number">1.0</span>, <span class="number">2.0</span>&#125;,  </span><br><span class="line">    &#123;<span class="number">4.0</span>, <span class="number">9.0</span>&#125;,  </span><br><span class="line">    &#123;<span class="number">7.0</span>, <span class="number">3.0</span>&#125;,  </span><br><span class="line">    &#123;<span class="number">1.0</span>, <span class="number">3.0</span>&#125;,  </span><br><span class="line">    &#123;<span class="number">3.0</span>, <span class="number">9.0</span>&#125;  </span><br><span class="line">&#125;;  </span><br><span class="line">  </span><br><span class="line">Point mean[K];  <span class="comment">///  保存每个簇的中心点  </span></span><br><span class="line">  </span><br><span class="line">float getDistance<span class="params">(Point point1, Point point2)</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    float d;  </span><br><span class="line">    d = <span class="built_in">sqrt</span><span class="params">(<span class="params">(point1.x - point2.x)</span> * <span class="params">(point1.x - point2.x)</span> + <span class="params">(point1.y - point2.y)</span> * <span class="params">(point1.y - point2.y)</span>)</span>;  </span><br><span class="line">    return d;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/// 计算每个簇的中心点  </span></span><br><span class="line">void getMean<span class="params">(int center[N])</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    Point tep;  </span><br><span class="line">    int i, j, count = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">for</span><span class="params">(i = <span class="number">0</span>; i &lt; K; ++i)</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        count = <span class="number">0</span>;  </span><br><span class="line">        tep.x = <span class="number">0.0</span>;   <span class="comment">/// 每算出一个簇的中心点值后清0  </span></span><br><span class="line">        tep.y = <span class="number">0.0</span>;  </span><br><span class="line">        <span class="keyword">for</span><span class="params">(j = <span class="number">0</span>; j &lt; N; ++j)</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span><span class="params">(i == center[j])</span>  </span><br><span class="line">            &#123;  </span><br><span class="line">                count++;  </span><br><span class="line">                tep.x += point[j].x;  </span><br><span class="line">                tep.y += point[j].y;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        tep.x /= count;  </span><br><span class="line">        tep.y /= count;  </span><br><span class="line">        mean[i] = tep;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">for</span><span class="params">(i = <span class="number">0</span>; i &lt; K; ++i)</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        printf<span class="params">(<span class="string">"The new center point of %d is : \t( %f, %f )\n"</span>, i+<span class="number">1</span>, mean[i].x, mean[i].y)</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/// 计算平方误差函数  </span></span><br><span class="line">float getE<span class="params">()</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    int i, j;  </span><br><span class="line">    float cnt = <span class="number">0.0</span>, sum = <span class="number">0.0</span>;  </span><br><span class="line">    <span class="keyword">for</span><span class="params">(i = <span class="number">0</span>; i &lt; K; ++i)</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">for</span><span class="params">(j = <span class="number">0</span>; j &lt; N; ++j)</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span><span class="params">(i == center[j])</span>  </span><br><span class="line">            &#123;  </span><br><span class="line">                cnt = <span class="params">(point[j].x - mean[i].x)</span> <span class="built_in">*</span> <span class="params">(point[j].x - mean[i].x)</span> + <span class="params">(point[j].y - mean[i].y)</span> <span class="built_in">*</span> <span class="params">(point[j].y - mean[i].y)</span>;  </span><br><span class="line">                sum += cnt;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return sum;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/// 把N个点聚类  </span></span><br><span class="line">void cluster<span class="params">()</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    int i, j, q;  </span><br><span class="line">    float <span class="built_in">min</span>;  </span><br><span class="line">    float distance[N][K];  </span><br><span class="line">    <span class="keyword">for</span><span class="params">(i = <span class="number">0</span>; i &lt; N; ++i)</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="built_in">min</span> = <span class="number">999999.0</span>;  </span><br><span class="line">        <span class="keyword">for</span><span class="params">(j = <span class="number">0</span>; j &lt; K; ++j)</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            distance[i][j] = getDistance<span class="params">(point[i], mean[j])</span>;  </span><br><span class="line">  </span><br><span class="line">            <span class="comment">/// printf("%f\n", distance[i][j]);  /// 可以用来测试对于每个点与3个中心点之间的距离  </span></span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">for</span><span class="params">(q = <span class="number">0</span>; q &lt; K; ++q)</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span><span class="params">(distance[i][q] &lt; min)</span>  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="built_in">min</span> = distance[i][q];  </span><br><span class="line">                center[i] = q;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        printf<span class="params">(<span class="string">"( %.0f, %.0f )\t in cluster-%d\n"</span>, point[i].x, point[i].y, center[i] + <span class="number">1</span>)</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    printf<span class="params">(<span class="string">"-----------------------------\n"</span>)</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">int main<span class="params">()</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    int i, j, n = <span class="number">0</span>;  </span><br><span class="line">    float temp1;  </span><br><span class="line">    float temp2, t;  </span><br><span class="line">    printf<span class="params">(<span class="string">"----------Data sets----------\n"</span>)</span>;  </span><br><span class="line">    <span class="keyword">for</span><span class="params">(i = <span class="number">0</span>; i &lt; N; ++i)</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        printf<span class="params">(<span class="string">"\t( %.0f, %.0f )\n"</span>, point[i].x, point[i].y)</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    printf<span class="params">(<span class="string">"-----------------------------\n"</span>)</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/* </span><br><span class="line">    可以选择当前时间为随机数 </span><br><span class="line">    srand((unsigned int)time(NULL)); </span><br><span class="line"> </span><br><span class="line">    for(i = 0; i &lt; K; ++i) </span><br><span class="line">    &#123; </span><br><span class="line">        j = rand() % K; </span><br><span class="line">        mean[i].x = point[j].x; </span><br><span class="line">        mean[i].y = point[j].y; </span><br><span class="line">    &#125; </span><br><span class="line">*/</span>  </span><br><span class="line">    mean[<span class="number">0</span>].x = point[<span class="number">0</span>].x;      <span class="comment">/// 初始化k个中心点  </span></span><br><span class="line">    mean[<span class="number">0</span>].y = point[<span class="number">0</span>].y;  </span><br><span class="line">  </span><br><span class="line">    mean[<span class="number">1</span>].x = point[<span class="number">3</span>].x;  </span><br><span class="line">    mean[<span class="number">1</span>].y = point[<span class="number">3</span>].y;  </span><br><span class="line">  </span><br><span class="line">    mean[<span class="number">2</span>].x = point[<span class="number">6</span>].x;  </span><br><span class="line">    mean[<span class="number">2</span>].y = point[<span class="number">6</span>].y;  </span><br><span class="line">  </span><br><span class="line">    cluster<span class="params">()</span>;          <span class="comment">/// 第一次根据预设的k个点进行聚类  </span></span><br><span class="line">    temp1 = getE<span class="params">()</span>;        <span class="comment">///  第一次平方误差  </span></span><br><span class="line">    n++;                   <span class="comment">///  n计算形成最终的簇用了多少次  </span></span><br><span class="line">  </span><br><span class="line">    printf<span class="params">(<span class="string">"The E1 is: %f\n\n"</span>, temp1)</span>;  </span><br><span class="line">  </span><br><span class="line">    getMean<span class="params">(center)</span>;  </span><br><span class="line">    cluster<span class="params">()</span>;  </span><br><span class="line">    temp2 = getE<span class="params">()</span>;        <span class="comment">///  根据簇形成新的中心点，并计算出平方误差  </span></span><br><span class="line">    n++;  </span><br><span class="line">  </span><br><span class="line">    printf<span class="params">(<span class="string">"The E2 is: %f\n\n"</span>, temp2)</span>;  </span><br><span class="line">  </span><br><span class="line">    while<span class="params">(fabs<span class="params">(temp2 - temp1)</span> != <span class="number">0</span>)</span>   <span class="comment">///  比较两次平方误差 判断是否相等，不相等继续迭代  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        temp1 = temp2;  </span><br><span class="line">        getMean<span class="params">(center)</span>;  </span><br><span class="line">        cluster<span class="params">()</span>;  </span><br><span class="line">        temp2 = getE<span class="params">()</span>;  </span><br><span class="line">        n++;  </span><br><span class="line">        printf<span class="params">(<span class="string">"The E%d is: %f\n"</span>, n, temp2)</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    printf<span class="params">(<span class="string">"The total number of cluster is: %d\n\n"</span>, n)</span>;  <span class="comment">/// 统计出迭代次数  </span></span><br><span class="line">    system<span class="params">(<span class="string">"pause"</span>)</span>;  </span><br><span class="line">    return <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -363,12 +415,28 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag">#Algorithm</a>
+          
+            <a href="/tags/k-means/" rel="tag">#k-means</a>
+          
+            <a href="/tags/数据挖掘/" rel="tag">#数据挖掘</a>
+          
+            <a href="/tags/机器学习/" rel="tag">#机器学习</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+            <a href="/tags/聚类/" rel="tag">#聚类</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/11/12/推排序的实现/" rel="next" title="推排序的实现">
+              <a href="/2014/11/12/堆排序的实现/" rel="next" title="推排序的实现">
                 <i class="fa fa-chevron-left"></i> 推排序的实现
               </a>
             
@@ -453,7 +521,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -461,7 +529,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -470,7 +538,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

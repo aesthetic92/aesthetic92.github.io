@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Algorithm,Bucket,排序,算法," />
 
 
 
@@ -80,16 +80,22 @@
 
 
 
-<meta name="description">
+<meta name="description" content="这是一个非常快的排序算法.
+假设需要对数据范围在0~1000的整数排序，我们需要1001个桶，来表示0~1000之间每一个数出现的次数，每一桶的作用标记每个数出现的次数.
+桶排序时间复杂度为O(N+M)，M为桶的个数，对于离散型数据，就有点浪费空间了.有点像bitmap，这个把每个数压缩成1bit.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最快最简单的排序——桶排序">
 <meta property="og:url" content="http://yoursite.com/2014/11/12/最快最简单的排序——桶排序/index.html">
 <meta property="og:site_name" content="Aesthetic92">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-04-24T03:14:41.855Z">
+<meta property="og:description" content="这是一个非常快的排序算法.
+假设需要对数据范围在0~1000的整数排序，我们需要1001个桶，来表示0~1000之间每一个数出现的次数，每一桶的作用标记每个数出现的次数.
+桶排序时间复杂度为O(N+M)，M为桶的个数，对于离散型数据，就有点浪费空间了.有点像bitmap，这个把每个数压缩成1bit.">
+<meta property="og:updated_time" content="2016-04-24T08:33:12.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最快最简单的排序——桶排序">
-<meta name="twitter:description">
+<meta name="twitter:description" content="这是一个非常快的排序算法.
+假设需要对数据范围在0~1000的整数排序，我们需要1001个桶，来表示0~1000之间每一个数出现的次数，每一桶的作用标记每个数出现的次数.
+桶排序时间复杂度为O(N+M)，M为桶的个数，对于离散型数据，就有点浪费空间了.有点像bitmap，这个把每个数压缩成1bit.">
 
 
 
@@ -285,6 +291,49 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/排序/" itemprop="url" rel="index">
+                    <span itemprop="name">排序</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/排序/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -324,7 +373,12 @@
       
 
       
-        
+        <p>这是一个非常快的排序算法.</p>
+<p>假设需要对数据范围在<code>0~1000</code>的整数排序，我们需要<code>1001</code>个桶，来表示<code>0~1000</code>之间每一个数出现的次数，每一桶的作用标记每个数出现的次数.</p>
+<p>桶排序时间复杂度为<code>O(N+M)</code>，<code>M</code>为桶的个数，对于离散型数据，就有点浪费空间了.<br>有点像<code>bitmap</code>，这个把每个数压缩成<code>1bit</code>.<br><a id="more"></a></p>
+<p><code>Code:</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;  </span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;string.h&gt;  </span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdlib.h&gt;  </span></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span><br><span class="line"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> book[<span class="number">1001</span>];  </span><br><span class="line">    <span class="keyword">int</span> i, j, t, n;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;= <span class="number">1000</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        book[i] = <span class="number">0</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);  </span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);  </span><br><span class="line">        book[t]++;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;= <span class="number">1000</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">1</span>; j &lt;= book[i]; ++j)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>, i);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);  </span><br><span class="line">    system(<span class="string">"pause"</span>);  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -363,6 +417,18 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag">#Algorithm</a>
+          
+            <a href="/tags/Bucket/" rel="tag">#Bucket</a>
+          
+            <a href="/tags/排序/" rel="tag">#排序</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
@@ -376,7 +442,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/11/12/推排序的实现/" rel="prev" title="推排序的实现">
+              <a href="/2014/11/12/堆排序的实现/" rel="prev" title="推排序的实现">
                 推排序的实现 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -453,7 +519,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -461,7 +527,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -470,7 +536,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

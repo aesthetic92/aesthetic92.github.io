@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Algorithm,栈,算法,队列," />
 
 
 
@@ -80,16 +80,20 @@
 
 
 
-<meta name="description">
+<meta name="description" content="游戏规则：将一副扑克牌平均分为两份，每人拿一份，A先拿出手中的第一张扑克牌放在桌上，然后B也拿出手中的第一张扑克牌，并放在A刚打出的扑克牌的上面，就像这样两人交替出牌. 出牌时如果某人打出的牌与桌上某张牌的牌面相同时，即可将两张相同的牌及其中间所夹的牌全部取走，并依次放到自己手中牌的末尾，当其中一人手中的牌全部出完时，游戏结束，对方获胜.
+假设游戏开始，预设牌面只有1~9，A手中有6张牌，顺序为：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="纸牌游戏——小猫钓鱼 栈与队列合用实现">
 <meta property="og:url" content="http://yoursite.com/2014/11/22/纸牌游戏——小猫钓鱼 栈与队列合用实现/index.html">
 <meta property="og:site_name" content="Aesthetic92">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-04-24T03:14:01.629Z">
+<meta property="og:description" content="游戏规则：将一副扑克牌平均分为两份，每人拿一份，A先拿出手中的第一张扑克牌放在桌上，然后B也拿出手中的第一张扑克牌，并放在A刚打出的扑克牌的上面，就像这样两人交替出牌. 出牌时如果某人打出的牌与桌上某张牌的牌面相同时，即可将两张相同的牌及其中间所夹的牌全部取走，并依次放到自己手中牌的末尾，当其中一人手中的牌全部出完时，游戏结束，对方获胜.
+假设游戏开始，预设牌面只有1~9，A手中有6张牌，顺序为：">
+<meta property="og:image" content="http://7xtbpn.com2.z0.glb.clouddn.com/%E7%BA%B8%E7%89%8C%E6%B8%B8%E6%88%8F.png">
+<meta property="og:updated_time" content="2016-04-24T08:33:16.493Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="纸牌游戏——小猫钓鱼 栈与队列合用实现">
-<meta name="twitter:description">
+<meta name="twitter:description" content="游戏规则：将一副扑克牌平均分为两份，每人拿一份，A先拿出手中的第一张扑克牌放在桌上，然后B也拿出手中的第一张扑克牌，并放在A刚打出的扑克牌的上面，就像这样两人交替出牌. 出牌时如果某人打出的牌与桌上某张牌的牌面相同时，即可将两张相同的牌及其中间所夹的牌全部取走，并依次放到自己手中牌的末尾，当其中一人手中的牌全部出完时，游戏结束，对方获胜.
+假设游戏开始，预设牌面只有1~9，A手中有6张牌，顺序为：">
 
 
 
@@ -285,6 +289,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -324,7 +359,14 @@
       
 
       
-        
+        <p><code>游戏规则：</code>将一副扑克牌平均分为两份，每人拿一份，<code>A</code>先拿出手中的第一张扑克牌放在桌上，然后<code>B</code>也拿出手中的第一张扑克牌，并放在<code>A</code>刚打出的扑克牌的上面，就像这样两人交替出牌. 出牌时如果某人打出的牌与桌上某张牌的牌面相同时，即可将两张相同的牌及其中间所夹的牌全部取走，并依次放到自己手中牌的末尾，当其中一人手中的牌全部出完时，游戏结束，对方获胜.</p>
+<p>假设游戏开始，预设牌面只有<code>1~9</code>，<code>A</code>手中有6张牌，顺序为：<code>2 4 1 2 5 6</code>，<code>B</code>手中也有<code>6</code>张牌，顺序为：<code>3 1 3 5 6 4</code>. 最终谁会获胜？</p>
+<p><code>Solution:</code> <code>A</code>，<code>B</code>主要是有两种操作，分别是出牌和赢牌. 这恰好是队列的出队和入队两个操作，而桌子就是一个栈，每打出一张牌就等于入栈，当有人赢牌时就相当于出栈拿走牌. 取走牌的规则是某人打出的牌与桌上某张相同，这里我们可以类似桶排序用一个数组记录桌上有哪些牌，当然枚举用一个<code>for</code>循环也是可以的.<br><a id="more"></a></p>
+<p><code>Code:</code></p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">#include</span> &lt;stdio.h&gt;  </span><br><span class="line"><span class="label">#include</span> &lt;<span class="keyword">string.h&gt; </span> </span><br><span class="line"><span class="label">#include</span> &lt;stdlib.h&gt;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">struct </span>queue  </span><br><span class="line">&#123;  </span><br><span class="line">    int <span class="preprocessor">data</span>[<span class="number">1000</span>]<span class="comment">;  </span></span><br><span class="line">    int head<span class="comment">;  </span></span><br><span class="line">    int tail<span class="comment">;  </span></span><br><span class="line">&#125;<span class="comment">;  </span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">struct </span>stack  </span><br><span class="line">&#123;  </span><br><span class="line">    int <span class="preprocessor">data</span>[<span class="number">10</span>]<span class="comment">;  </span></span><br><span class="line">    int top<span class="comment">;  </span></span><br><span class="line">&#125;<span class="comment">;  </span></span><br><span class="line">  </span><br><span class="line"><span class="label">int</span> main(int argc, char const *argv[])  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="keyword">struct </span>queue <span class="literal">q1</span>, <span class="literal">q2</span><span class="comment">;  </span></span><br><span class="line">    <span class="keyword">struct </span>stack s<span class="comment">;  </span></span><br><span class="line">    int <span class="keyword">book[10]; </span> </span><br><span class="line">    int i, t<span class="comment">;  </span></span><br><span class="line">  </span><br><span class="line">    <span class="literal">q1</span>.head = <span class="literal">q1</span>.tail = <span class="number">0</span><span class="comment">;  </span></span><br><span class="line">    <span class="literal">q2</span>.head = <span class="literal">q2</span>.tail = <span class="number">0</span><span class="comment">;  </span></span><br><span class="line">  </span><br><span class="line">    s.top = -<span class="number">1</span><span class="comment">;  </span></span><br><span class="line">  </span><br><span class="line">    for (i = <span class="number">1</span><span class="comment">; i &lt;= 9; ++i)         /// 记录桌上有哪些牌，初始为空  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">book[i] </span>= <span class="number">0</span><span class="comment">;  </span></span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    for (i = <span class="number">0</span><span class="comment">; i &lt; 6; ++i)  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        scanf(<span class="string">"%d"</span>, &amp;<span class="literal">q1</span><span class="preprocessor">.data</span>[<span class="literal">q1</span>.tail++])<span class="comment">;  </span></span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    for (i = <span class="number">0</span><span class="comment">; i &lt; 6; ++i)  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        scanf(<span class="string">"%d"</span>, &amp;<span class="literal">q2</span><span class="preprocessor">.data</span>[<span class="literal">q2</span>.tail++])<span class="comment">;  </span></span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="preprocessor">while</span>(<span class="literal">q1</span>.head &lt; <span class="literal">q1</span>.tail &amp;&amp; <span class="literal">q2</span>.head &lt; <span class="literal">q2</span>.tail)  </span><br><span class="line">    &#123;  </span><br><span class="line">        t = <span class="literal">q1</span><span class="preprocessor">.data</span>[<span class="literal">q1</span>.head]<span class="comment">;       /// 第一个人出第一张牌 出队  </span></span><br><span class="line">        <span class="preprocessor">if</span>(<span class="number">0</span> == <span class="keyword">book[t]) </span>           /// 桌上没有这张牌 入栈  </span><br><span class="line">        &#123;  </span><br><span class="line">            s<span class="preprocessor">.data</span>[++s.top] = t<span class="comment">;  </span></span><br><span class="line">            <span class="keyword">book[t] </span>= <span class="number">1</span><span class="comment">;        /// 并标记桌上已经有牌面为t的牌  </span></span><br><span class="line">            <span class="literal">q1</span>.head++<span class="comment">;  </span></span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="preprocessor">else</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="literal">q1</span><span class="preprocessor">.data</span>[<span class="literal">q1</span>.tail++] = t<span class="comment">;         /// 赢牌  </span></span><br><span class="line">            <span class="literal">q1</span>.head++<span class="comment">;  </span></span><br><span class="line">            <span class="preprocessor">while</span>(s<span class="preprocessor">.data</span>[s.top] != t)       /// 把相同的牌放到某人手中牌的末尾  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">book[s.data[s.top]] </span>= <span class="number">0</span><span class="comment">;  </span></span><br><span class="line">                <span class="literal">q1</span><span class="preprocessor">.data</span>[<span class="literal">q1</span>.tail++] = s<span class="preprocessor">.data</span>[s.top--]<span class="comment">;  </span></span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        t = <span class="literal">q2</span><span class="preprocessor">.data</span>[<span class="literal">q2</span>.head]<span class="comment">;  </span></span><br><span class="line">        <span class="preprocessor">if</span>(<span class="number">0</span> == <span class="keyword">book[t]) </span> </span><br><span class="line">        &#123;  </span><br><span class="line">            s<span class="preprocessor">.data</span>[++s.top] = t<span class="comment">;  </span></span><br><span class="line">            <span class="keyword">book[t] </span>= <span class="number">1</span><span class="comment">;  </span></span><br><span class="line">            <span class="literal">q2</span>.head++<span class="comment">;  </span></span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="preprocessor">else</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="literal">q2</span><span class="preprocessor">.data</span>[<span class="literal">q2</span>.tail++] = t<span class="comment">;  </span></span><br><span class="line">            <span class="literal">q2</span>.head++<span class="comment">;  </span></span><br><span class="line">            <span class="preprocessor">while</span>(s<span class="preprocessor">.data</span>[s.top] != t)  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">book[s.data[s.top]] </span>= <span class="number">0</span><span class="comment">;  </span></span><br><span class="line">                <span class="literal">q2</span><span class="preprocessor">.data</span>[<span class="literal">q2</span>.tail++] = s<span class="preprocessor">.data</span>[s.top--]<span class="comment">;  </span></span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="preprocessor">if</span>(<span class="literal">q2</span>.head == <span class="literal">q2</span>.tail)                 /// 对手手中没有牌  </span><br><span class="line">    &#123;  </span><br><span class="line">        printf(<span class="string">"\nA win\n"</span>)<span class="comment">;  </span></span><br><span class="line">        printf(<span class="string">"A手中的纸牌: "</span>)<span class="comment">;  </span></span><br><span class="line">        for (i = <span class="literal">q1</span>.head<span class="comment">; i &lt; q1.tail; ++i)  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            printf(<span class="string">"%d "</span>, <span class="literal">q1</span><span class="preprocessor">.data</span>[i])<span class="comment">;  </span></span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="preprocessor">if</span>(s.top &gt; -<span class="number">1</span>)                       /// 输出桌上的牌  </span><br><span class="line">        &#123;  </span><br><span class="line">            printf(<span class="string">"\n桌上的牌: "</span>)<span class="comment">;  </span></span><br><span class="line">            for (i = <span class="number">0</span><span class="comment">; i &lt;= s.top; ++i)  </span></span><br><span class="line">            &#123;  </span><br><span class="line">                printf(<span class="string">"%d "</span>, s<span class="preprocessor">.data</span>[i])<span class="comment">;  </span></span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="preprocessor">else</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            printf(<span class="string">"\n桌上已经没有纸牌了！"</span>)<span class="comment">;  </span></span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="preprocessor">else</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        printf(<span class="string">"\nB win\n"</span>)<span class="comment">;  </span></span><br><span class="line">        printf(<span class="string">"B手中的纸牌: "</span>)<span class="comment">;  </span></span><br><span class="line">        for (i = <span class="literal">q2</span>.head<span class="comment">; i &lt; q2.tail; ++i)  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            printf(<span class="string">"%d "</span>, <span class="literal">q2</span><span class="preprocessor">.data</span>[i])<span class="comment">;  </span></span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="preprocessor">if</span>(s.top &gt; -<span class="number">1</span>)  </span><br><span class="line">        &#123;  </span><br><span class="line">            printf(<span class="string">"\n桌上的牌: "</span>)<span class="comment">;  </span></span><br><span class="line">            for (i = <span class="number">0</span><span class="comment">; i &lt;= s.top; ++i)  </span></span><br><span class="line">            &#123;  </span><br><span class="line">                printf(<span class="string">"%d "</span>, s<span class="preprocessor">.data</span>[i])<span class="comment">;  </span></span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="preprocessor">else</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            printf(<span class="string">"\n桌上已经没有纸牌了！"</span>)<span class="comment">;  </span></span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return <span class="number">0</span><span class="comment">;  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xtbpn.com2.z0.glb.clouddn.com/%E7%BA%B8%E7%89%8C%E6%B8%B8%E6%88%8F.png" alt="运行结果"></p>
+<p><code>Question:</code> 怎么解决游戏结束问题？</p>
+
       
     </div>
     
@@ -362,6 +404,18 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag">#Algorithm</a>
+          
+            <a href="/tags/栈/" rel="tag">#栈</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+            <a href="/tags/队列/" rel="tag">#队列</a>
+          
+        </div>
       
 
       
@@ -453,7 +507,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -461,7 +515,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -470,7 +524,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

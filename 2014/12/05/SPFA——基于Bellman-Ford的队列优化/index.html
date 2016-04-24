@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Algorithm,SPFA,算法,队列," />
 
 
 
@@ -80,16 +80,19 @@
 
 
 
-<meta name="description">
+<meta name="description" content="Bellman-Ford算法在每一次实施松弛操作时，就会有一些顶点已经求得最短路径，此后这些顶点的最短路径的估计值就会一直保持不变，不再受后续松弛操作的影响，但是每次还要判断是否需要松弛，这里浪费了大量的时间.
+SPFA(Shortest Path Faster Algorithm)是基于Bellman-Ford算法的改进，每次进队最短路径估计值发生变化了的顶点的所有出边执行松弛操作，借助一个队列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SPFA——基于Bellman-Ford的队列优化">
 <meta property="og:url" content="http://yoursite.com/2014/12/05/SPFA——基于Bellman-Ford的队列优化/index.html">
 <meta property="og:site_name" content="Aesthetic92">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-04-24T03:25:17.580Z">
+<meta property="og:description" content="Bellman-Ford算法在每一次实施松弛操作时，就会有一些顶点已经求得最短路径，此后这些顶点的最短路径的估计值就会一直保持不变，不再受后续松弛操作的影响，但是每次还要判断是否需要松弛，这里浪费了大量的时间.
+SPFA(Shortest Path Faster Algorithm)是基于Bellman-Ford算法的改进，每次进队最短路径估计值发生变化了的顶点的所有出边执行松弛操作，借助一个队列">
+<meta property="og:updated_time" content="2016-04-24T08:32:31.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SPFA——基于Bellman-Ford的队列优化">
-<meta name="twitter:description">
+<meta name="twitter:description" content="Bellman-Ford算法在每一次实施松弛操作时，就会有一些顶点已经求得最短路径，此后这些顶点的最短路径的估计值就会一直保持不变，不再受后续松弛操作的影响，但是每次还要判断是否需要松弛，这里浪费了大量的时间.
+SPFA(Shortest Path Faster Algorithm)是基于Bellman-Ford算法的改进，每次进队最短路径估计值发生变化了的顶点的所有出边执行松弛操作，借助一个队列">
 
 
 
@@ -285,6 +288,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -324,7 +358,13 @@
       
 
       
-        
+        <p><code>Bellman-Ford算法</code>在每一次实施松弛操作时，就会有一些顶点已经求得最短路径，此后这些顶点的最短路径的估计值就会一直保持不变，不再受后续松弛操作的影响，但是每次还要判断是否需要松弛，这里浪费了大量的时间.</p>
+<p><code>SPFA(Shortest Path Faster Algorithm)</code>是基于<code>Bellman-Ford算法</code>的改进，每次进队最短路径估计值发生变化了的顶点的所有出边执行松弛操作，借助一个队列.</p>
+<p><code>思想</code>：每次选取队首顶点<code>u</code>，对顶点k的所有出边进行松弛操作，例如有一条<code>u-&gt;v</code>的边，如果通过<code>u-&gt;v</code>的这条边使得源点到顶点<code>v</code>的最短路径变得更短，也即<code>(dis[u] + e[u][v] &lt; dis[v])</code>，并且顶点<code>v</code>不在当前的队列(并用借助一个数组标记顶点是否已经在队列之中)，则将顶点<code>v</code>放置队尾. 对顶点<code>u</code>的所有出边松弛完毕之后，就将顶点<code>u</code>出队，接下来不断从队列中取出新的队首顶点反复上面操作直到队列为空结束.<br><a id="more"></a></p>
+<p>用队列优化的<code>Bellman-Ford算法</code>的关键之处：只有那些在前一遍松弛中改变了最短路径估计值的点，才可能引起它们邻接点最短路径估计值发生改变. 因此用一个队列保存被成成功松弛的顶点，之后只对队列中的点进行处理，这就降低了算法的时间复杂度.</p>
+<p><code>Q</code>：<code>SPFA</code>如何判断一个图是否有负环？<br><code>A</code>：如果某个点进入队列次数超过n次，那么这个图肯定存在负环.</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">include</span> &lt;stdio.<span class="keyword">h</span>&gt;  </span><br><span class="line">#<span class="keyword">include</span> &lt;string.<span class="keyword">h</span>&gt;  </span><br><span class="line">#<span class="keyword">include</span> &lt;stdlib.<span class="keyword">h</span>&gt;  </span><br><span class="line">  </span><br><span class="line">#define <span class="keyword">INF</span> 999999  </span><br><span class="line">int book[10];              <span class="comment">/// 初始化为顶点都不在队列  </span></span><br><span class="line">int <span class="keyword">que</span>[100];              <span class="comment">/// 松弛成功并且顶点不在队列则并入队列  </span></span><br><span class="line">  </span><br><span class="line">int main(int argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])  </span><br><span class="line">&#123;  </span><br><span class="line">    int i, j, <span class="keyword">n</span>, <span class="keyword">m</span>;  </span><br><span class="line">    int q1, q2, q3;  </span><br><span class="line">    int <span class="keyword">dis</span>[10], <span class="keyword">e</span>[10][10];  </span><br><span class="line">    int head, tail;  </span><br><span class="line">  </span><br><span class="line">    scanf(<span class="string">"%d %d"</span>, &amp;<span class="keyword">n</span>, &amp;<span class="keyword">m</span>);  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">for</span>(j = 1; j &lt;= <span class="keyword">n</span>; ++j)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span>(i == j)  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">e</span>[i][j] = 0;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">else</span>  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">e</span>[i][j] = <span class="keyword">INF</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">m</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        scanf(<span class="string">"%d %d %d"</span>, &amp;q1, &amp;q2, &amp;q3);  </span><br><span class="line">        <span class="keyword">e</span>[q1][q2] = q3;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">dis</span>[i] = <span class="keyword">INF</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">dis</span>[1] = 0;              <span class="comment">/// 初始化dis[1]为0，其他为∞  </span></span><br><span class="line">  </span><br><span class="line">    head = tail = 1;  </span><br><span class="line">    <span class="keyword">que</span>[head] = 1;           <span class="comment">/// 1号顶点入队  </span></span><br><span class="line">    book[1] = 1;  </span><br><span class="line">    tail++;  </span><br><span class="line">    <span class="keyword">while</span>(head &lt; tail)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">e</span>[<span class="keyword">que</span>[head]][i] != <span class="keyword">INF</span> &amp;&amp; <span class="keyword">dis</span>[i] &gt; <span class="keyword">dis</span>[<span class="keyword">que</span>[head]] + <span class="keyword">e</span>[<span class="keyword">que</span>[head]][i])  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">dis</span>[i] = <span class="keyword">dis</span>[<span class="keyword">que</span>[head]] + <span class="keyword">e</span>[<span class="keyword">que</span>[head]][i];  </span><br><span class="line">                <span class="keyword">if</span> (!book[i])               <span class="comment">/// 顶点不在队列，加入队列  </span></span><br><span class="line">                &#123;  </span><br><span class="line">                    book[i] = 1;  </span><br><span class="line">                    <span class="keyword">que</span>[tail++] = i;  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        book[<span class="keyword">que</span>[head]] = 0;    <span class="comment">/// 重新标记不在队列  </span></span><br><span class="line">        head++;                 <span class="comment">/// 相当于出队  </span></span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        printf(<span class="string">"%d "</span>, <span class="keyword">dis</span>[i]);  </span><br><span class="line">    &#125;  </span><br><span class="line">    printf(<span class="string">"\n"</span>);  </span><br><span class="line">  </span><br><span class="line">    system(<span class="string">"pause"</span>);  </span><br><span class="line">    <span class="keyword">return</span> 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -362,6 +402,18 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag">#Algorithm</a>
+          
+            <a href="/tags/SPFA/" rel="tag">#SPFA</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+            <a href="/tags/队列/" rel="tag">#队列</a>
+          
+        </div>
       
 
       
@@ -453,7 +505,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -461,7 +513,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -470,7 +522,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

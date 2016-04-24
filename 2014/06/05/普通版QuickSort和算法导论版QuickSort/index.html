@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Algorithm,QuickSort,算法,算法导论," />
 
 
 
@@ -80,16 +80,19 @@
 
 
 
-<meta name="description">
+<meta name="description" content="普通版QuickSort Code：
+123456789101112131415161718192021222324252627282930void QuickSort(int array[], int numsize)  &amp;#123;      int i = 0, j = numsize - 1;      int val = array[0];      if(numsize &amp;gt; 1)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="普通版QuickSort和算法导论版QuickSort">
 <meta property="og:url" content="http://yoursite.com/2014/06/05/普通版QuickSort和算法导论版QuickSort/index.html">
 <meta property="og:site_name" content="Aesthetic92">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-04-24T03:35:05.749Z">
+<meta property="og:description" content="普通版QuickSort Code：
+123456789101112131415161718192021222324252627282930void QuickSort(int array[], int numsize)  &amp;#123;      int i = 0, j = numsize - 1;      int val = array[0];      if(numsize &amp;gt; 1)">
+<meta property="og:updated_time" content="2016-04-24T08:32:13.651Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="普通版QuickSort和算法导论版QuickSort">
-<meta name="twitter:description">
+<meta name="twitter:description" content="普通版QuickSort Code：
+123456789101112131415161718192021222324252627282930void QuickSort(int array[], int numsize)  &amp;#123;      int i = 0, j = numsize - 1;      int val = array[0];      if(numsize &amp;gt; 1)">
 
 
 
@@ -285,6 +288,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -324,7 +358,11 @@
       
 
       
-        
+        <p>普通版<code>QuickSort Code：</code></p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">void <span class="type">QuickSort</span>(<span class="built_in">int</span> <span class="built_in">array</span><span class="literal">[]</span>, <span class="built_in">int</span> numsize)  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="built_in">int</span> i = <span class="number">0</span>, j = numsize - <span class="number">1</span>;  </span><br><span class="line">    <span class="built_in">int</span> <span class="keyword">val</span> = <span class="built_in">array</span>[<span class="number">0</span>];  </span><br><span class="line">    <span class="keyword">if</span>(numsize &gt; <span class="number">1</span>)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">while</span>(i &lt; j)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">for</span>(; j &gt; i; j--)  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">array</span>[j] &gt; <span class="keyword">val</span>)  </span><br><span class="line">                &#123;  </span><br><span class="line">                    <span class="built_in">array</span>[i] = <span class="built_in">array</span>[j];  </span><br><span class="line">                    break;  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">for</span>(; i &lt; j; i++)  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">array</span>[i] &lt; <span class="keyword">val</span>)  </span><br><span class="line">                &#123;  </span><br><span class="line">                    <span class="built_in">array</span>[j] = <span class="built_in">array</span>[i];  </span><br><span class="line">                    break;  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="built_in">array</span>[i] = <span class="keyword">val</span>;  </span><br><span class="line">        <span class="type">QuickSort</span>(<span class="built_in">array</span>, i);  </span><br><span class="line">        <span class="type">QuickSort</span>(<span class="built_in">array</span> + i + <span class="number">1</span>, numsize - <span class="number">1</span> - i);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>算法导论版快排<code>QuickSort Code：</code></p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">/<span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span>  </span><br><span class="line"><span class="keyword">*</span> Theme:         QuickSort  </span><br><span class="line"><span class="keyword">*</span> Content:       算法导论版快排  </span><br><span class="line"><span class="keyword">*</span> Language:      C  </span><br><span class="line"><span class="keyword">*</span> Author:        Aesthetic92  </span><br><span class="line"><span class="keyword">*</span> Description:     </span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span>/  </span><br><span class="line">  </span><br><span class="line"><span class="comment">#include &lt;stdio.h&gt;  </span></span><br><span class="line"><span class="comment">#include &lt;stdlib.h&gt;  </span></span><br><span class="line">  </span><br><span class="line">void QuickSort(int array[], int p, int r);  </span><br><span class="line">int partition(int array[], int p, int r);  </span><br><span class="line">  </span><br><span class="line">int main()  </span><br><span class="line">&#123;  </span><br><span class="line">    int i;  </span><br><span class="line">    int array[10];  </span><br><span class="line">    for(i = 0; i <span class="variable">&lt; 10; i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        scanf("%d", &amp;array[i]);  </span><br><span class="line">    &#125;  </span><br><span class="line">    QuickSort(array, 0, 9);  </span><br><span class="line">    for(i = 0; i &lt; 10; i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        printf("%d ", array[i]);  </span><br><span class="line">    &#125;  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">int partition(int array[], int p, int r)  </span><br><span class="line">&#123;  </span><br><span class="line">    int i, j, temp, pivot;  </span><br><span class="line">    pivot = array[r];  </span><br><span class="line">    i = p - 1;  </span><br><span class="line">    for(j = p; j &lt; r; j++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        if(array[j] &lt;= pivot)  </span><br><span class="line">        &#123;  </span><br><span class="line">            i += 1;  </span><br><span class="line">            temp = array[i];  </span><br><span class="line">            array[i] = array[j];  </span><br><span class="line">            array[j] = temp;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    temp = array[i + 1];  </span><br><span class="line">    array[i + 1] = array[r];  </span><br><span class="line">    array[r] = temp;  </span><br><span class="line">    return i + 1;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">void QuickSort(int array[], int p, int r)  </span><br><span class="line">&#123;  </span><br><span class="line">    int q;  </span><br><span class="line">    if(p &lt; r)  </span><br><span class="line">    &#123;  </span><br><span class="line">        q = partition(array, p, r);  </span><br><span class="line">        QuickSort(array, p, q - 1);  </span><br><span class="line">        QuickSort(array, q + 1, r);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -362,6 +400,18 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag">#Algorithm</a>
+          
+            <a href="/tags/QuickSort/" rel="tag">#QuickSort</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+            <a href="/tags/算法导论/" rel="tag">#算法导论</a>
+          
+        </div>
       
 
       
@@ -449,7 +499,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -457,7 +507,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -466,7 +516,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

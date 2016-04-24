@@ -289,6 +289,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -329,9 +360,18 @@
 
       
         
-          
-            
-          
+          <p><code>Input:</code></p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line"><span class="number">20 40 32 67</span> <span class="number">40 20 89 30</span><span class="number">0 400 15</span></span><br></pre></td></tr></table></figure>
+<p><code>Ouput:</code></p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">15 20 32 40</span> <span class="number">67 89 300</span> 400</span><br></pre></td></tr></table></figure>
+<p><code>Methods:</code> </p>
+<ol>
+<li>先将这<code>n</code>个数字去重，再进行从小到大排序并输出，可以通过桶排序来解决. 时间复杂度是<code>O(N+M)</code>.
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/11/22/数组的去重与排序/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -399,6 +439,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -440,117 +511,9 @@
       
         
           
-            
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
+            <p><code>KMP Code:</code></p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">/<span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span> </span><br><span class="line"><span class="keyword">*</span> Theme:         KMP算法 </span><br><span class="line"><span class="keyword">*</span> Content: </span><br><span class="line"><span class="keyword">*</span> Language:      C </span><br><span class="line"><span class="keyword">*</span> Author:        Aesthetic92 </span><br><span class="line"><span class="keyword">*</span> Description: </span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span>/  </span><br><span class="line">  </span><br><span class="line"><span class="comment">#include &lt;stdio.h&gt;  </span></span><br><span class="line"><span class="comment">#include &lt;stdlib.h&gt;  </span></span><br><span class="line"><span class="comment">#include &lt;string.h&gt;  </span></span><br><span class="line">  </span><br><span class="line">void get_next(char s[], int next[])  </span><br><span class="line">&#123;  </span><br><span class="line">    int i, j, len;  </span><br><span class="line">    i = 0;  </span><br><span class="line">    j = -1;  </span><br><span class="line">    len = strlen(s);  </span><br><span class="line">    next[0] = -1;  </span><br><span class="line">    while(i <span class="variable">&lt; len)  </span><br><span class="line">    &#123;  </span><br><span class="line">        if(j == -1 || s[i] == s[j])  </span><br><span class="line">        &#123;  </span><br><span class="line">            ++i;  </span><br><span class="line">            ++j;  </span><br><span class="line">            next[i] = j;  </span><br><span class="line">        &#125;  </span><br><span class="line">        else  </span><br><span class="line">        &#123;  </span><br><span class="line">            j = next[j];  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">///优化的next数组  </span><br><span class="line">void get_nextval(char s[], int nextval[])  </span><br><span class="line">&#123;  </span><br><span class="line">    int i, j, len;  </span><br><span class="line">    i = 0;  </span><br><span class="line">    j = -1;  </span><br><span class="line">    len = strlen(s);  </span><br><span class="line">    nextval[0] = -1;  </span><br><span class="line">    while(i &lt; len)  </span><br><span class="line">    &#123;  </span><br><span class="line">        if(j == -1 || s[i] == s[j])  </span><br><span class="line">        &#123;  </span><br><span class="line">            ++i;  </span><br><span class="line">            ++j;  </span><br><span class="line">            if(s[i] != s[j])  </span><br><span class="line">            &#123;  </span><br><span class="line">                nextval[i] = j;  </span><br><span class="line">            &#125;  </span><br><span class="line">            else  </span><br><span class="line">            &#123;  </span><br><span class="line">                nextval[i] = nextval[j];  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        else  </span><br><span class="line">        &#123;  </span><br><span class="line">            j = nextval[j];  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">int kmp(char s[], char t[])  </span><br><span class="line">&#123;  </span><br><span class="line">    int i, j, next[255];  </span><br><span class="line">    int s_len, t_len;  </span><br><span class="line">    i = 0;  </span><br><span class="line">    j = 0;  </span><br><span class="line">    s_len = strlen(s);  </span><br><span class="line">    t_len = strlen(t);  </span><br><span class="line">    get_next(t, next);  </span><br><span class="line">    ///get_nextval(t, next);  </span><br><span class="line">  </span><br><span class="line">    while(i &lt; s_len &amp;&amp; j &lt; t_len)  /// j 指向最后一个元素的坐标比数组长度小1  </span><br><span class="line">    &#123;  </span><br><span class="line">        if(j == -1 || s[i] == t[j])  </span><br><span class="line">        &#123;  </span><br><span class="line">            ++i;  </span><br><span class="line">            ++j;  </span><br><span class="line">        &#125;  </span><br><span class="line">        else  </span><br><span class="line">        &#123;  </span><br><span class="line">            j = next[j];  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    if(j &gt;</span>= t_len)  </span><br><span class="line">    &#123;  </span><br><span class="line">        return i - t_len;  </span><br><span class="line">    &#125;  </span><br><span class="line">    else  </span><br><span class="line">    &#123;  </span><br><span class="line">        return 0;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">int main()  </span><br><span class="line">&#123;  </span><br><span class="line">    char src[255] = <span class="string">"ABCABCABCD"</span>;  /// 空格也算  </span><br><span class="line">    char des[255] = <span class="string">"ABCABCD"</span>;  </span><br><span class="line">    int index, pos;  </span><br><span class="line">    index = kmp(src, des);  </span><br><span class="line">    printf(<span class="string">"%d\n"</span>, index);  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/11/19/HashTable开发寻址处理冲突/" itemprop="url">
-                  HashTable开发寻址处理冲突
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-11-19T23:35:16+08:00" content="2014-11-19">
-              2014-11-19
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/11/19/HashTable开发寻址处理冲突/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/11/19/HashTable开发寻址处理冲突/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-
-          
-          
-             <span id="/2014/11/19/HashTable开发寻址处理冲突/" class="leancloud_visitors" data-flag-title="HashTable开发寻址处理冲突">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -619,6 +582,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Life/" itemprop="url" rel="index">
+                    <span itemprop="name">Life</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -660,7 +642,9 @@
       
         
           
-            
+            <p>这样一个明媚的下午， 喝着绿茶, 晒着太阳看着Data Mining. 生命里也许没有那么气势恢宏，但有的是这样的享受，温和的阳光下. 有那么一天, 我们会怀念曾经的自己！</p>
+<p><code>深圳</code><br><code>Nov. 15,  2014</code></p>
+
           
         
       
@@ -729,6 +713,49 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据挖掘/" itemprop="url" rel="index">
+                    <span itemprop="name">数据挖掘</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据挖掘/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据挖掘/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -769,9 +796,14 @@
 
       
         
-          
-            
-          
+          <p>最近做了聚类实验，就写了下<code>K-Means</code>算法，<code>C语言</code>实现.<br>实验给出的数据集比较小,总共有<code>11</code>个：<code>(2, 10), (2, 5), (8, 4), (5, 8), (7, 5), (6, 4), (1, 2), (4, 9), (7, 3), (1, 3), (3, 9)</code></p>
+<p>代码运行的聚类结果：<br><code>Cluster-1</code>： <code>(2, 10),  (5, 8),  (4, 9),  (3, 9)</code><br><code>Cluster-2</code>： <code>(8, 4),  (7, 5),  (6, 4),  (7, 3)</code><br><code>Cluster-3</code>： <code>(2, 5),  (1, 2),  (1, 3)</code></p>
+<p><code>Clementine</code>软件运行结果：<br><img src="http://7xtbpn.com2.z0.glb.clouddn.com/kmean.png" alt="k-means"><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/11/14/k-means聚类算法的实现（C语言）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -819,7 +851,7 @@
             
               
                 
-                <a class="post-title-link" href="/2014/11/12/推排序的实现/" itemprop="url">
+                <a class="post-title-link" href="/2014/11/12/堆排序的实现/" itemprop="url">
                   推排序的实现
                 </a>
               
@@ -839,13 +871,44 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/11/12/推排序的实现/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/11/12/推排序的实现/" itemprop="commentsCount"></span>
+                <a href="/2014/11/12/堆排序的实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/11/12/堆排序的实现/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -856,7 +919,7 @@
 
           
           
-             <span id="/2014/11/12/推排序的实现/" class="leancloud_visitors" data-flag-title="推排序的实现">
+             <span id="/2014/11/12/堆排序的实现/" class="leancloud_visitors" data-flag-title="推排序的实现">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -880,7 +943,9 @@
       
         
           
-            
+            <p><code>Code:</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;  </span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdlib.h&gt;  </span></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Adjust_heap</span><span class="params">(<span class="keyword">int</span> <span class="built_in">array</span>[], <span class="keyword">int</span> pos, <span class="keyword">int</span> n)</span>  </span><br><span class="line"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> i, temp;  </span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">2</span> * pos; i &lt;= n; i *= <span class="number">2</span>)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span>(i &lt; n &amp;&amp; <span class="built_in">array</span>[i] &lt; <span class="built_in">array</span>[i+<span class="number">1</span>])  </span><br><span class="line">        &#123;  </span><br><span class="line">            i++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">array</span>[i] &lt; <span class="built_in">array</span>[i/<span class="number">2</span>])  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">break</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        temp = <span class="built_in">array</span>[i];  </span><br><span class="line">        <span class="built_in">array</span>[i] = <span class="built_in">array</span>[i/<span class="number">2</span>];  </span><br><span class="line">        <span class="built_in">array</span>[i/<span class="number">2</span>] = temp;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span><br><span class="line"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">array</span>[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">195</span>, <span class="number">17</span>, <span class="number">23</span>, <span class="number">38</span>, <span class="number">40</span>, <span class="number">690</span>, <span class="number">275</span>, <span class="number">113</span>&#125;;  </span><br><span class="line">    <span class="keyword">int</span> i, temp;  </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">10</span>;  </span><br><span class="line">    <span class="keyword">for</span>(i = n / <span class="number">2</span>; i &gt; <span class="number">0</span>; i--)  </span><br><span class="line">    &#123;  </span><br><span class="line">        Adjust_heap(<span class="built_in">array</span>, i, n);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">for</span>(i = n; i &gt; <span class="number">1</span>; i--)  </span><br><span class="line">    &#123;  </span><br><span class="line">        temp = <span class="built_in">array</span>[<span class="number">1</span>];  </span><br><span class="line">        <span class="built_in">array</span>[<span class="number">1</span>] = <span class="built_in">array</span>[i];  </span><br><span class="line">        <span class="built_in">array</span>[i] = temp;  </span><br><span class="line">        Adjust_heap(<span class="built_in">array</span>, <span class="number">1</span>, i - <span class="number">1</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, <span class="built_in">array</span>[i]);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -949,6 +1014,49 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/排序/" itemprop="url" rel="index">
+                    <span itemprop="name">排序</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/排序/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -989,9 +1097,14 @@
 
       
         
-          
-            
-          
+          <p>这是一个非常快的排序算法.</p>
+<p>假设需要对数据范围在<code>0~1000</code>的整数排序，我们需要<code>1001</code>个桶，来表示<code>0~1000</code>之间每一个数出现的次数，每一桶的作用标记每个数出现的次数.</p>
+<p>桶排序时间复杂度为<code>O(N+M)</code>，<code>M</code>为桶的个数，对于离散型数据，就有点浪费空间了.<br>有点像<code>bitmap</code>，这个把每个数压缩成<code>1bit</code>.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/11/12/最快最简单的排序——桶排序/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1059,6 +1172,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Life/" itemprop="url" rel="index">
+                    <span itemprop="name">Life</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -1100,7 +1232,8 @@
       
         
           
-            
+            <p>多年以后，再回忆高考，其实本质上没有考的好与差的说法，重要的是所有的年轻人在一起，做份试题，然后决定去哪座城市，做什么工作，今后和谁相知，和谁一起旅行，和谁走一辈子。不管故事怎样，结局如何，一切都是美好的。</p>
+
           
         
       
@@ -1169,6 +1302,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/C语言/" itemprop="url" rel="index">
+                    <span itemprop="name">C语言</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -1209,9 +1361,16 @@
 
       
         
-          
-            
-          
+          <h1 id="%d,%f输入输出的问题">%d,%f输入输出的问题</h1><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">printf</span>(<span class="string">"<span class="variable">%f</span>"</span>, <span class="number">8</span>/<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">printf</span>(<span class="string">"<span class="variable">%d</span>"</span>, <span class="number">8.0</span>/<span class="number">5.0</span>);</span><br></pre></td></tr></table></figure>
+<p>这两句输出的结果有点意外，比如第一个输出的是<code>0.000000</code>，而<code>8/5</code>本来按整数的结果是<code>1</code>，原因是整数和浮点数的编码方式不一样，这个整数1存储到浮点数时，编码方式完全不一样，浮点数第一位是符号位，中间<code>8</code>位是阶码，后面<code>23</code>为是尾数.</p>
+<p>整数1按照浮点数解析表示：<code>0 0000 0000 0000 0000 0000 0000 0000 001</code><br>                                表示成整数：<code>[1 + 2^23] * 2^(-127)</code>   很小的值</p>
+<p><code>Tips：</code>整数 / 整数 = 整数， 浮点数 / 浮点数 = 浮点数<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/06/06/C语言中有意思的问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1279,6 +1438,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -1320,7 +1510,11 @@
       
         
           
-            
+            <p>普通版<code>QuickSort Code：</code></p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">void <span class="type">QuickSort</span>(<span class="built_in">int</span> <span class="built_in">array</span><span class="literal">[]</span>, <span class="built_in">int</span> numsize)  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="built_in">int</span> i = <span class="number">0</span>, j = numsize - <span class="number">1</span>;  </span><br><span class="line">    <span class="built_in">int</span> <span class="keyword">val</span> = <span class="built_in">array</span>[<span class="number">0</span>];  </span><br><span class="line">    <span class="keyword">if</span>(numsize &gt; <span class="number">1</span>)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">while</span>(i &lt; j)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">for</span>(; j &gt; i; j--)  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">array</span>[j] &gt; <span class="keyword">val</span>)  </span><br><span class="line">                &#123;  </span><br><span class="line">                    <span class="built_in">array</span>[i] = <span class="built_in">array</span>[j];  </span><br><span class="line">                    break;  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">for</span>(; i &lt; j; i++)  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">array</span>[i] &lt; <span class="keyword">val</span>)  </span><br><span class="line">                &#123;  </span><br><span class="line">                    <span class="built_in">array</span>[j] = <span class="built_in">array</span>[i];  </span><br><span class="line">                    break;  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="built_in">array</span>[i] = <span class="keyword">val</span>;  </span><br><span class="line">        <span class="type">QuickSort</span>(<span class="built_in">array</span>, i);  </span><br><span class="line">        <span class="type">QuickSort</span>(<span class="built_in">array</span> + i + <span class="number">1</span>, numsize - <span class="number">1</span> - i);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>算法导论版快排<code>QuickSort Code：</code></p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">/<span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span>  </span><br><span class="line"><span class="keyword">*</span> Theme:         QuickSort  </span><br><span class="line"><span class="keyword">*</span> Content:       算法导论版快排  </span><br><span class="line"><span class="keyword">*</span> Language:      C  </span><br><span class="line"><span class="keyword">*</span> Author:        Aesthetic92  </span><br><span class="line"><span class="keyword">*</span> Description:     </span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span>/  </span><br><span class="line">  </span><br><span class="line"><span class="comment">#include &lt;stdio.h&gt;  </span></span><br><span class="line"><span class="comment">#include &lt;stdlib.h&gt;  </span></span><br><span class="line">  </span><br><span class="line">void QuickSort(int array[], int p, int r);  </span><br><span class="line">int partition(int array[], int p, int r);  </span><br><span class="line">  </span><br><span class="line">int main()  </span><br><span class="line">&#123;  </span><br><span class="line">    int i;  </span><br><span class="line">    int array[10];  </span><br><span class="line">    for(i = 0; i <span class="variable">&lt; 10; i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        scanf("%d", &amp;array[i]);  </span><br><span class="line">    &#125;  </span><br><span class="line">    QuickSort(array, 0, 9);  </span><br><span class="line">    for(i = 0; i &lt; 10; i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        printf("%d ", array[i]);  </span><br><span class="line">    &#125;  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">int partition(int array[], int p, int r)  </span><br><span class="line">&#123;  </span><br><span class="line">    int i, j, temp, pivot;  </span><br><span class="line">    pivot = array[r];  </span><br><span class="line">    i = p - 1;  </span><br><span class="line">    for(j = p; j &lt; r; j++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        if(array[j] &lt;= pivot)  </span><br><span class="line">        &#123;  </span><br><span class="line">            i += 1;  </span><br><span class="line">            temp = array[i];  </span><br><span class="line">            array[i] = array[j];  </span><br><span class="line">            array[j] = temp;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    temp = array[i + 1];  </span><br><span class="line">    array[i + 1] = array[r];  </span><br><span class="line">    array[r] = temp;  </span><br><span class="line">    return i + 1;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">void QuickSort(int array[], int p, int r)  </span><br><span class="line">&#123;  </span><br><span class="line">    int q;  </span><br><span class="line">    if(p &lt; r)  </span><br><span class="line">    &#123;  </span><br><span class="line">        q = partition(array, p, r);  </span><br><span class="line">        QuickSort(array, p, q - 1);  </span><br><span class="line">        QuickSort(array, q + 1, r);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -1393,7 +1587,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1401,7 +1595,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1410,7 +1604,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -675,6 +675,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -715,9 +746,14 @@
 
       
         
-          
-            
-          
+          <p><code>Bellman-Ford算法</code>在每一次实施松弛操作时，就会有一些顶点已经求得最短路径，此后这些顶点的最短路径的估计值就会一直保持不变，不再受后续松弛操作的影响，但是每次还要判断是否需要松弛，这里浪费了大量的时间.</p>
+<p><code>SPFA(Shortest Path Faster Algorithm)</code>是基于<code>Bellman-Ford算法</code>的改进，每次进队最短路径估计值发生变化了的顶点的所有出边执行松弛操作，借助一个队列.</p>
+<p><code>思想</code>：每次选取队首顶点<code>u</code>，对顶点k的所有出边进行松弛操作，例如有一条<code>u-&gt;v</code>的边，如果通过<code>u-&gt;v</code>的这条边使得源点到顶点<code>v</code>的最短路径变得更短，也即<code>(dis[u] + e[u][v] &lt; dis[v])</code>，并且顶点<code>v</code>不在当前的队列(并用借助一个数组标记顶点是否已经在队列之中)，则将顶点<code>v</code>放置队尾. 对顶点<code>u</code>的所有出边松弛完毕之后，就将顶点<code>u</code>出队，接下来不断从队列中取出新的队首顶点反复上面操作直到队列为空结束.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/12/05/SPFA——基于Bellman-Ford的队列优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -785,6 +821,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -827,7 +894,7 @@
         
           <p><code>Dijkstra算法</code>虽好，但是不能解决带负权边的图，而<code>Bellman-Ford算法</code>就是解决这个问题的.</p>
 <p>在一个含有<code>n</code>个顶点的图中，任意两点之间的最短路径最多包含<code>n-1</code>条边，最短路径中不可能包含回路.<br>最短路径是一个不包含回路的简单路径，回路分为正权回路(回路权值之和为正)和负权回路(回路权值之和为负). 如果最短路径中包含正权回路，那么去掉这个回路，一定可以得到更短的路径；如果最短路径中包含负权回路，那么肯定没有最短路径，因为每多走一次负权回路就可以得到更短的路径. 因此最短路径肯定是一个不包含回路的最短路径，即最多包含<code>n-1</code>条边.</p>
-<p>算法的主要思想：首先<code>dis</code>数组初始化顶点u到其余各个顶点的距离为<code>∞</code>，<code>dis[u] = 0</code>. 然后每轮对输入的所有边进行松弛，更新<code>dis</code>数组，至多需要进行<code>n-1</code>可以求出顶点<code>u</code>到其余各顶点的最短路径，因为任意两点之间的最短路径最多包含<code>n-1</code>条边，所以只需要<code>n-1</code>轮就行.<br>
+<p>算法的主要思想：首先<code>dis</code>数组初始化顶点<code>u</code>到其余各个顶点的距离为<code>∞</code>，<code>dis[u] = 0</code>. 然后每轮对输入的所有边进行松弛，更新<code>dis</code>数组，至多需要进行<code>n-1</code>可以求出顶点<code>u</code>到其余各顶点的最短路径，因为任意两点之间的最短路径最多包含<code>n-1</code>条边，所以只需要<code>n-1</code>轮就行.<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/12/04/Bellman-Ford——解决负权边/#more" rel="contents">
               阅读全文 &raquo;
@@ -900,6 +967,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -940,9 +1038,17 @@
 
       
         
-          
-            
-          
+          <p>算法思想：每次找到离源点最近的顶点，然后以该顶点为中心进行扩展，最终得到源点到其余所有点的最短路径.时间复杂度是<code>O(N^2)</code>.<br>基本步骤：</p>
+<ol>
+<li>将所有的顶点分为两部分，已知最短路程的顶点集合<code>S</code>和未知最短路径的顶点集合<code>V</code>. 最开始，已知最短路径在集合<code>S</code>中只有源点一个顶点，用<code>book</code>数组来标记哪些点在集合<code>S</code>中.</li>
+<li>设置源点p到自己的最短路径为0(即<code>dis[p] = 0</code>). 若存在有源点能直接到达的顶点<code>i</code>，则把<code>dis[i]</code> 设为 <code>e[p][i]</code>. 同时把所有其他(源点不能直接到达的)顶点的最短路径设为<code>∞</code>.</li>
+<li>在集合V的所有顶点中选择一个离源点p最近的顶点<code>u</code>(即<code>dis[u]</code>最小)加入到集合<code>P</code>中. 并考察所有以点<code>u</code>为起点的边，对每一条边进行松弛操作.</li>
+<li>重复第<code>3</code>步，如果集合<code>V</code>为空，则结束，最终得到的<code>dis</code>数组中的值就是源点到所有顶点的最短路径.
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/12/04/Dijkstra算法——通过边实现松弛/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1010,6 +1116,49 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/最短路径/" itemprop="url" rel="index">
+                    <span itemprop="name">最短路径</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/最短路径/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -1050,9 +1199,12 @@
 
       
         
-          
-            
-          
+          <p><code>基本思想：</code>最开始只允许经过<code>1</code>号顶点进行中转，接下来只允许经过<code>1</code>和<code>2</code>号顶点进行中转<code>......</code>允许经过<code>1~n</code>号所有顶点进行中转，求任意两点之间的最短路径. 用一句话概括就是：从 <code>i</code> 号顶点到 <code>j</code> 号顶点只经过前 <code>k</code> 号点的最短路径. 时间复杂度<code>O(N^3).</code><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/12/04/只有五行的算法——Floyd-Warshall/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1120,6 +1272,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -1160,9 +1343,13 @@
 
       
         
-          
-            
-          
+          <h1 id="深度优先遍历">深度优先遍历</h1><p><code>主要思想：</code>首先以一个未被访问过的顶点作为起始顶点，沿当前顶点的边走到未被访问过的顶点；当没有未被访问的顶点时，则回到上一个顶点，继续试探试探访问别的顶点，直到所有的顶点都被访问过. 显然，深度优先遍历是沿着图的某一条分支遍历直到末端，然后回溯(<code>su</code>)，再沿着另一条进行同样的遍历，直到所有的顶点都被访问过为止.</p>
+<p>深度优先遍历<code>DFS</code>， 同样适用于求出连通分量个数.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/12/01/深度优先遍历&&广度优先遍历实现/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1230,6 +1417,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -1270,9 +1488,14 @@
 
       
         
-          
-            
-          
+          <p><code>游戏规则：</code>将一副扑克牌平均分为两份，每人拿一份，<code>A</code>先拿出手中的第一张扑克牌放在桌上，然后<code>B</code>也拿出手中的第一张扑克牌，并放在<code>A</code>刚打出的扑克牌的上面，就像这样两人交替出牌. 出牌时如果某人打出的牌与桌上某张牌的牌面相同时，即可将两张相同的牌及其中间所夹的牌全部取走，并依次放到自己手中牌的末尾，当其中一人手中的牌全部出完时，游戏结束，对方获胜.</p>
+<p>假设游戏开始，预设牌面只有<code>1~9</code>，<code>A</code>手中有6张牌，顺序为：<code>2 4 1 2 5 6</code>，<code>B</code>手中也有<code>6</code>张牌，顺序为：<code>3 1 3 5 6 4</code>. 最终谁会获胜？</p>
+<p><code>Solution:</code> <code>A</code>，<code>B</code>主要是有两种操作，分别是出牌和赢牌. 这恰好是队列的出队和入队两个操作，而桌子就是一个栈，每打出一张牌就等于入栈，当有人赢牌时就相当于出栈拿走牌. 取走牌的规则是某人打出的牌与桌上某张相同，这里我们可以类似桶排序用一个数组记录桌上有哪些牌，当然枚举用一个<code>for</code>循环也是可以的.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/11/22/纸牌游戏——小猫钓鱼 栈与队列合用实现/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1340,6 +1563,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -1381,7 +1635,9 @@
       
         
           
-            
+            <p><code>Code:</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;  </span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;string.h&gt;  </span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdlib.h&gt;  </span></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span><br><span class="line"></span>&#123;  </span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">100</span>], s[<span class="number">100</span>];  </span><br><span class="line">    <span class="keyword">int</span> i, len, mid, top;  </span><br><span class="line">  </span><br><span class="line">    gets(str);  </span><br><span class="line">    len = <span class="built_in">strlen</span>(str);  </span><br><span class="line">    mid = len/<span class="number">2</span> - <span class="number">1</span>;     <span class="comment">/// 字符串的中点  </span></span><br><span class="line">  </span><br><span class="line">    top = -<span class="number">1</span>;            <span class="comment">/// 栈初始化  </span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= mid; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        s[++top] = str[i];  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span>(len % <span class="number">2</span>)          <span class="comment">/// 判断字符串长度是偶数还是奇数  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        mid += <span class="number">2</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        mid++;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span> (i = mid; i &lt; len; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span> (str[i] != s[top])  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">break</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        top--;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, top == -<span class="number">1</span>? <span class="string">"Yes"</span>: <span class="string">"No"</span>);  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -1454,7 +1710,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1462,7 +1718,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1471,7 +1727,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

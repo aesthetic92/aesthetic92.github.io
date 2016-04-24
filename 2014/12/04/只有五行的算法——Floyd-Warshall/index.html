@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Algorithm,Floyd-Warshall,算法," />
 
 
 
@@ -80,16 +80,17 @@
 
 
 
-<meta name="description">
+<meta name="description" content="基本思想：最开始只允许经过1号顶点进行中转，接下来只允许经过1和2号顶点进行中转......允许经过1~n号所有顶点进行中转，求任意两点之间的最短路径. 用一句话概括就是：从 i 号顶点到 j 号顶点只经过前 k 号点的最短路径. 时间复杂度O(N^3).">
 <meta property="og:type" content="article">
 <meta property="og:title" content="只有五行的算法——Floyd-Warshall">
 <meta property="og:url" content="http://yoursite.com/2014/12/04/只有五行的算法——Floyd-Warshall/index.html">
 <meta property="og:site_name" content="Aesthetic92">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-04-24T03:13:13.142Z">
+<meta property="og:description" content="基本思想：最开始只允许经过1号顶点进行中转，接下来只允许经过1和2号顶点进行中转......允许经过1~n号所有顶点进行中转，求任意两点之间的最短路径. 用一句话概括就是：从 i 号顶点到 j 号顶点只经过前 k 号点的最短路径. 时间复杂度O(N^3).">
+<meta property="og:image" content="http://7xtbpn.com2.z0.glb.clouddn.com/floyd.png">
+<meta property="og:updated_time" content="2016-04-24T08:33:22.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="只有五行的算法——Floyd-Warshall">
-<meta name="twitter:description">
+<meta name="twitter:description" content="基本思想：最开始只允许经过1号顶点进行中转，接下来只允许经过1和2号顶点进行中转......允许经过1~n号所有顶点进行中转，求任意两点之间的最短路径. 用一句话概括就是：从 i 号顶点到 j 号顶点只经过前 k 号点的最短路径. 时间复杂度O(N^3).">
 
 
 
@@ -285,6 +286,49 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/最短路径/" itemprop="url" rel="index">
+                    <span itemprop="name">最短路径</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/最短路径/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -324,7 +368,13 @@
       
 
       
-        
+        <p><code>基本思想：</code>最开始只允许经过<code>1</code>号顶点进行中转，接下来只允许经过<code>1</code>和<code>2</code>号顶点进行中转<code>......</code>允许经过<code>1~n</code>号所有顶点进行中转，求任意两点之间的最短路径. 用一句话概括就是：从 <code>i</code> 号顶点到 <code>j</code> 号顶点只经过前 <code>k</code> 号点的最短路径. 时间复杂度<code>O(N^3).</code><br><a id="more"></a></p>
+<p><code>Code:</code></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">include</span> &lt;stdio.<span class="keyword">h</span>&gt;  </span><br><span class="line">#<span class="keyword">include</span> &lt;string.<span class="keyword">h</span>&gt;  </span><br><span class="line">#<span class="keyword">include</span> &lt;stdlib.<span class="keyword">h</span>&gt;  </span><br><span class="line">  </span><br><span class="line">#define <span class="keyword">INF</span> 999999  </span><br><span class="line">  </span><br><span class="line">int main(int argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])  </span><br><span class="line">&#123;  </span><br><span class="line">    int k, i, j, <span class="keyword">n</span>, <span class="keyword">m</span>;  </span><br><span class="line">    int q1, q2, q3;  </span><br><span class="line">    int <span class="keyword">e</span>[10][10];  </span><br><span class="line">  </span><br><span class="line">    scanf(<span class="string">"%d %d"</span>, &amp;<span class="keyword">n</span>, &amp;<span class="keyword">m</span>);  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">for</span>(j = 1; j &lt;= <span class="keyword">n</span>; ++j)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span>(i == j)  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">e</span>[i][j] = 0;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">else</span>  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">e</span>[i][j] = <span class="keyword">INF</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">m</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        scanf(<span class="string">"%d %d %d"</span>, &amp;q1, &amp;q2, &amp;q3);  </span><br><span class="line">        <span class="keyword">e</span>[q1][q2] = q3;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(k = 1; k &lt;= <span class="keyword">n</span>; ++k)             <span class="comment">/// Floyd-Warshall 算法核心语句  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">for</span>(j = 1; j &lt;= <span class="keyword">n</span>; ++j)  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">if</span>(<span class="keyword">e</span>[i][j] &gt; <span class="keyword">e</span>[i][k] + <span class="keyword">e</span>[k][j])  </span><br><span class="line">                &#123;  </span><br><span class="line">                    <span class="keyword">e</span>[i][j] = <span class="keyword">e</span>[i][k] + <span class="keyword">e</span>[k][j];  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">for</span>(j = 1; j &lt;= <span class="keyword">n</span>; ++j)  </span><br><span class="line">        &#123;  </span><br><span class="line">            printf(<span class="string">"%5d"</span>, <span class="keyword">e</span>[i][j]);  </span><br><span class="line">        &#125;  </span><br><span class="line">        printf(<span class="string">"\n"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    system(<span class="string">"pause"</span>);  </span><br><span class="line">    <span class="keyword">return</span> 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Floyd-Warshall 算法</code>不能解决带有“负权回路”或者叫“负权环”的图，因为带有“负权回路”的图没有最短路径.</p>
+<p><img src="http://7xtbpn.com2.z0.glb.clouddn.com/floyd.png" alt="Floyd-Warshall"></p>
+<p>这个就不存在 <code>1</code> 号顶点到 <code>3</code> 号顶点的最短路径，因为<code>1-&gt;2-&gt;3-&gt;1-&gt;2-&gt;3-&gt;1-&gt;...1-&gt;2-&gt;3</code> 这样的路径，每绕一次 <code>1-&gt;2-&gt;3</code> 这样的环，最短路径就会减少<code>1</code>，永远找不到最短路径.</p>
+
       
     </div>
     
@@ -362,6 +412,16 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag">#Algorithm</a>
+          
+            <a href="/tags/Floyd-Warshall/" rel="tag">#Floyd-Warshall</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+        </div>
       
 
       
@@ -453,7 +513,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -461,7 +521,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -470,7 +530,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

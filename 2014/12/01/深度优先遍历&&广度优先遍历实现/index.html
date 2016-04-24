@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Algorithm,BFS,DES,广度优先遍历,深度优先遍历,算法," />
 
 
 
@@ -80,16 +80,19 @@
 
 
 
-<meta name="description">
+<meta name="description" content="深度优先遍历主要思想：首先以一个未被访问过的顶点作为起始顶点，沿当前顶点的边走到未被访问过的顶点；当没有未被访问的顶点时，则回到上一个顶点，继续试探试探访问别的顶点，直到所有的顶点都被访问过. 显然，深度优先遍历是沿着图的某一条分支遍历直到末端，然后回溯(su)，再沿着另一条进行同样的遍历，直到所有的顶点都被访问过为止.
+深度优先遍历DFS， 同样适用于求出连通分量个数.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深度优先遍历&&广度优先遍历实现">
 <meta property="og:url" content="http://yoursite.com/2014/12/01/深度优先遍历&&广度优先遍历实现/index.html">
 <meta property="og:site_name" content="Aesthetic92">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-04-24T03:18:50.763Z">
+<meta property="og:description" content="深度优先遍历主要思想：首先以一个未被访问过的顶点作为起始顶点，沿当前顶点的边走到未被访问过的顶点；当没有未被访问的顶点时，则回到上一个顶点，继续试探试探访问别的顶点，直到所有的顶点都被访问过. 显然，深度优先遍历是沿着图的某一条分支遍历直到末端，然后回溯(su)，再沿着另一条进行同样的遍历，直到所有的顶点都被访问过为止.
+深度优先遍历DFS， 同样适用于求出连通分量个数.">
+<meta property="og:updated_time" content="2016-04-24T08:32:20.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度优先遍历&&广度优先遍历实现">
-<meta name="twitter:description">
+<meta name="twitter:description" content="深度优先遍历主要思想：首先以一个未被访问过的顶点作为起始顶点，沿当前顶点的边走到未被访问过的顶点；当没有未被访问的顶点时，则回到上一个顶点，继续试探试探访问别的顶点，直到所有的顶点都被访问过. 显然，深度优先遍历是沿着图的某一条分支遍历直到末端，然后回溯(su)，再沿着另一条进行同样的遍历，直到所有的顶点都被访问过为止.
+深度优先遍历DFS， 同样适用于求出连通分量个数.">
 
 
 
@@ -285,6 +288,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -324,7 +358,14 @@
       
 
       
-        
+        <h1 id="深度优先遍历">深度优先遍历</h1><p><code>主要思想：</code>首先以一个未被访问过的顶点作为起始顶点，沿当前顶点的边走到未被访问过的顶点；当没有未被访问的顶点时，则回到上一个顶点，继续试探试探访问别的顶点，直到所有的顶点都被访问过. 显然，深度优先遍历是沿着图的某一条分支遍历直到末端，然后回溯(<code>su</code>)，再沿着另一条进行同样的遍历，直到所有的顶点都被访问过为止.</p>
+<p>深度优先遍历<code>DFS</code>， 同样适用于求出连通分量个数.<br><a id="more"></a></p>
+<p><code>Code:</code></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">include</span> &lt;stdio.<span class="keyword">h</span>&gt;  </span><br><span class="line">#<span class="keyword">include</span> &lt;string.<span class="keyword">h</span>&gt;  </span><br><span class="line">#<span class="keyword">include</span> &lt;stdlib.<span class="keyword">h</span>&gt;  </span><br><span class="line">  </span><br><span class="line">#define <span class="keyword">INF</span> 999999  </span><br><span class="line">int book[101], <span class="keyword">e</span>[101][101];         <span class="comment">/// book 数组代表顶点是否被访问  </span></span><br><span class="line">int <span class="keyword">sum</span>, <span class="keyword">n</span>;  </span><br><span class="line">  </span><br><span class="line">void dfs(int cur)  </span><br><span class="line">&#123;  </span><br><span class="line">    int i;  </span><br><span class="line">    printf(<span class="string">"%d "</span>, cur);  </span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">n</span> == ++<span class="keyword">sum</span>)            <span class="comment">///   所有的顶点全部访问则退出  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">e</span>[cur][i] == 1 &amp;&amp; book[i] == 0)  </span><br><span class="line">        &#123;  </span><br><span class="line">            book[i] = 1;  </span><br><span class="line">            dfs(i);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">int main()  </span><br><span class="line">&#123;  </span><br><span class="line">    int i, j, a, b, <span class="keyword">m</span>;  </span><br><span class="line">    scanf(<span class="string">"%d %d"</span>, &amp;<span class="keyword">n</span>, &amp;<span class="keyword">m</span>);            <span class="comment">/// n 代表顶点个数, m 代表边的条数  </span></span><br><span class="line">    <span class="keyword">for</span> (i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">for</span> (j = 1; j &lt;= <span class="keyword">n</span>; ++j)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span>(i == j)  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">e</span>[i][j] = 0;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">else</span>  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">e</span>[i][j] = <span class="keyword">INF</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">m</span>; ++i)      <span class="comment">/// 读入顶点之间的边  </span></span><br><span class="line">    &#123;  </span><br><span class="line">  </span><br><span class="line">        scanf(<span class="string">"%d %d"</span>, &amp;a, &amp;b);  </span><br><span class="line">        <span class="keyword">e</span>[a][b] = 1;  </span><br><span class="line">        <span class="keyword">e</span>[b][a] = 1;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)       <span class="comment">/// 遍历,适用于统计连通分量个数  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span>(book[i] == 0)  </span><br><span class="line">        &#123;  </span><br><span class="line">            book[i] = 1;  </span><br><span class="line">            dfs(i);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    system(<span class="string">"pause"</span>);  </span><br><span class="line">    <span class="keyword">return</span> 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="广度优先遍历">广度优先遍历</h1><p><code>主要思想：</code>首先以一个未被访问的顶点作为起始顶点，访问其所有相邻的顶点，然后对每个相邻的顶点，再访问它们相邻的未被访问过的顶点，直到所有的顶点都被访问过，遍历结束.</p>
+<p><code>Code:</code></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">include</span> &lt;stdio.<span class="keyword">h</span>&gt;  </span><br><span class="line">#<span class="keyword">include</span> &lt;string.<span class="keyword">h</span>&gt;  </span><br><span class="line">#<span class="keyword">include</span> &lt;stdlib.<span class="keyword">h</span>&gt;  </span><br><span class="line">  </span><br><span class="line">#define <span class="keyword">INF</span> 999999  </span><br><span class="line">  </span><br><span class="line">int book[100];  </span><br><span class="line">  </span><br><span class="line">int main(int argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])  </span><br><span class="line">&#123;  </span><br><span class="line">    int i, j, <span class="keyword">m</span>, <span class="keyword">n</span>, cur;  </span><br><span class="line">    int a, b, <span class="keyword">e</span>[101][101];  </span><br><span class="line">    int <span class="keyword">que</span>[10001], head, tail;  </span><br><span class="line">  </span><br><span class="line">    scanf(<span class="string">"%d %d"</span>, &amp;<span class="keyword">n</span>, &amp;<span class="keyword">m</span>);  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">for</span>(j = 1; j &lt;= <span class="keyword">n</span>; ++j)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span>(i == j)  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">e</span>[i][j] = 0;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">else</span>  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">e</span>[i][j] = <span class="keyword">INF</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">m</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        scanf(<span class="string">"%d %d"</span>, &amp;a, &amp;b);  </span><br><span class="line">        <span class="keyword">e</span>[a][b] = 1;  </span><br><span class="line">        <span class="keyword">e</span>[a][b] = 1;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    head = 1;        <span class="comment">/// 队列初始化  </span></span><br><span class="line">    tail = 1;          </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">que</span>[tail] = 1;   <span class="comment">/// 从 1 顶点出发, 将1顶点加入队列    </span></span><br><span class="line">    ++tail;  </span><br><span class="line">    book[1] = 1;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">while</span>(head &lt; tail)  </span><br><span class="line">    &#123;  </span><br><span class="line">        cur = <span class="keyword">que</span>[head];  </span><br><span class="line">        <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">e</span>[cur][i] == 1 &amp;&amp; book[i] == 0)  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">que</span>[tail++] = i;  </span><br><span class="line">                book[i] = 1;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span>(tail &gt; <span class="keyword">n</span>)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">break</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        head++;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        printf(<span class="string">"%d "</span>, <span class="keyword">que</span>[i]);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    system(<span class="string">"pause"</span>);  </span><br><span class="line">    <span class="keyword">return</span> 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -362,6 +403,22 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag">#Algorithm</a>
+          
+            <a href="/tags/BFS/" rel="tag">#BFS</a>
+          
+            <a href="/tags/DES/" rel="tag">#DES</a>
+          
+            <a href="/tags/广度优先遍历/" rel="tag">#广度优先遍历</a>
+          
+            <a href="/tags/深度优先遍历/" rel="tag">#深度优先遍历</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+        </div>
       
 
       
@@ -453,7 +510,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -461,7 +518,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -470,7 +527,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -565,7 +622,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#深度优先遍历"><span class="nav-number">1.</span> <span class="nav-text">深度优先遍历</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#广度优先遍历"><span class="nav-number">2.</span> <span class="nav-text">广度优先遍历</span></a></li></ol></div>
             
           </div>
         </section>

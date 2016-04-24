@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Algorithm,Dijkstra,算法," />
 
 
 
@@ -80,16 +80,25 @@
 
 
 
-<meta name="description">
+<meta name="description" content="算法思想：每次找到离源点最近的顶点，然后以该顶点为中心进行扩展，最终得到源点到其余所有点的最短路径.时间复杂度是O(N^2).基本步骤：
+
+将所有的顶点分为两部分，已知最短路程的顶点集合S和未知最短路径的顶点集合V. 最开始，已知最短路径在集合S中只有源点一个顶点，用book数组来标记哪些点在集合S中.
+设置源点p到自己的最短路径为0(即dis[p] = 0). 若存在有源点能直接到达的顶点i，则">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dijkstra算法——通过边实现松弛">
 <meta property="og:url" content="http://yoursite.com/2014/12/04/Dijkstra算法——通过边实现松弛/index.html">
 <meta property="og:site_name" content="Aesthetic92">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-04-24T03:17:16.658Z">
+<meta property="og:description" content="算法思想：每次找到离源点最近的顶点，然后以该顶点为中心进行扩展，最终得到源点到其余所有点的最短路径.时间复杂度是O(N^2).基本步骤：
+
+将所有的顶点分为两部分，已知最短路程的顶点集合S和未知最短路径的顶点集合V. 最开始，已知最短路径在集合S中只有源点一个顶点，用book数组来标记哪些点在集合S中.
+设置源点p到自己的最短路径为0(即dis[p] = 0). 若存在有源点能直接到达的顶点i，则">
+<meta property="og:updated_time" content="2016-04-24T08:31:02.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dijkstra算法——通过边实现松弛">
-<meta name="twitter:description">
+<meta name="twitter:description" content="算法思想：每次找到离源点最近的顶点，然后以该顶点为中心进行扩展，最终得到源点到其余所有点的最短路径.时间复杂度是O(N^2).基本步骤：
+
+将所有的顶点分为两部分，已知最短路程的顶点集合S和未知最短路径的顶点集合V. 最开始，已知最短路径在集合S中只有源点一个顶点，用book数组来标记哪些点在集合S中.
+设置源点p到自己的最短路径为0(即dis[p] = 0). 若存在有源点能直接到达的顶点i，则">
 
 
 
@@ -285,6 +294,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -324,7 +364,17 @@
       
 
       
-        
+        <p>算法思想：每次找到离源点最近的顶点，然后以该顶点为中心进行扩展，最终得到源点到其余所有点的最短路径.时间复杂度是<code>O(N^2)</code>.<br>基本步骤：</p>
+<ol>
+<li>将所有的顶点分为两部分，已知最短路程的顶点集合<code>S</code>和未知最短路径的顶点集合<code>V</code>. 最开始，已知最短路径在集合<code>S</code>中只有源点一个顶点，用<code>book</code>数组来标记哪些点在集合<code>S</code>中.</li>
+<li>设置源点p到自己的最短路径为0(即<code>dis[p] = 0</code>). 若存在有源点能直接到达的顶点<code>i</code>，则把<code>dis[i]</code> 设为 <code>e[p][i]</code>. 同时把所有其他(源点不能直接到达的)顶点的最短路径设为<code>∞</code>.</li>
+<li>在集合V的所有顶点中选择一个离源点p最近的顶点<code>u</code>(即<code>dis[u]</code>最小)加入到集合<code>P</code>中. 并考察所有以点<code>u</code>为起点的边，对每一条边进行松弛操作.</li>
+<li>重复第<code>3</code>步，如果集合<code>V</code>为空，则结束，最终得到的<code>dis</code>数组中的值就是源点到所有顶点的最短路径.<a id="more"></a>
+</li>
+</ol>
+<p>一个点到其余各个顶点的最短路径也叫做“单源最短路径”. 这个<code>Dijkstra</code>同样求最短路径的图同样不能有负权边，因为扩展到负权边的时候会产生更短的路径，有可能破坏了已经更新的点路径不会改变的性质.</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">include</span> &lt;stdio.<span class="keyword">h</span>&gt;  </span><br><span class="line">#<span class="keyword">include</span> &lt;string.<span class="keyword">h</span>&gt;  </span><br><span class="line">#<span class="keyword">include</span> &lt;stdlib.<span class="keyword">h</span>&gt;  </span><br><span class="line">  </span><br><span class="line">#define <span class="keyword">INF</span> 999999  </span><br><span class="line">int book[10];          <span class="comment">/// 用来纪录已经是最短路径的点  </span></span><br><span class="line">  </span><br><span class="line">int main(int argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])  </span><br><span class="line">&#123;  </span><br><span class="line">    int i, j, <span class="keyword">m</span>, <span class="keyword">n</span>;  </span><br><span class="line">    int q1, q2, q3;  </span><br><span class="line">    int <span class="keyword">u</span>, v, min;  </span><br><span class="line">    int <span class="keyword">e</span>[100][100], <span class="keyword">dis</span>[10];  </span><br><span class="line">  </span><br><span class="line">    scanf(<span class="string">"%d %d"</span>, &amp;<span class="keyword">n</span>, &amp;<span class="keyword">m</span>);  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">for</span>(j = 1; j &lt;= <span class="keyword">n</span>; ++j)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span>(i == j)  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">e</span>[i][j] = 0;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">else</span>  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">e</span>[i][j] = <span class="keyword">INF</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">m</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        scanf(<span class="string">"%d %d %d"</span>, &amp;q1, &amp;q2, &amp;q3);  </span><br><span class="line">        <span class="keyword">e</span>[q1][q2] = q3;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">dis</span>[i] = <span class="keyword">e</span>[1][i];  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    book[1] = 1;              <span class="comment">/// Dijkstra 算法核心  </span></span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt; <span class="keyword">n</span>; ++i)      <span class="comment">/// 计算n-1次  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        min = <span class="keyword">INF</span>;  </span><br><span class="line">        <span class="keyword">for</span>(j = 1; j &lt;= <span class="keyword">n</span>; ++j)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">dis</span>[j] &lt; min &amp;&amp; book[j] == 0)  </span><br><span class="line">            &#123;  </span><br><span class="line">                min = <span class="keyword">dis</span>[j];  </span><br><span class="line">                <span class="keyword">u</span> = j;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">        book[<span class="keyword">u</span>] = 1;  </span><br><span class="line">        <span class="keyword">for</span>(v = 1; v &lt;= <span class="keyword">n</span>; ++v)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">e</span>[<span class="keyword">u</span>][v] != <span class="keyword">INF</span> &amp;&amp; <span class="keyword">dis</span>[v] &gt; <span class="keyword">dis</span>[<span class="keyword">u</span>] + <span class="keyword">e</span>[<span class="keyword">u</span>][v])  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">dis</span>[v] = <span class="keyword">dis</span>[<span class="keyword">u</span>] + <span class="keyword">e</span>[<span class="keyword">u</span>][v];            <span class="comment">/// 这个过程就是"松弛"  </span></span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        printf(<span class="string">"%d "</span>, <span class="keyword">dis</span>[i]);  </span><br><span class="line">    &#125;  </span><br><span class="line">    printf(<span class="string">"\n"</span>);  </span><br><span class="line">  </span><br><span class="line">    system(<span class="string">"pause"</span>);  </span><br><span class="line">    <span class="keyword">return</span> 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -362,6 +412,16 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag">#Algorithm</a>
+          
+            <a href="/tags/Dijkstra/" rel="tag">#Dijkstra</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+        </div>
       
 
       
@@ -453,7 +513,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -461,7 +521,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -470,7 +530,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

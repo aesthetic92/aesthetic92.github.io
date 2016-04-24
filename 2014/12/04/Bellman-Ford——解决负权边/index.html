@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Algorithm,Bellman-Ford,算法,负权边," />
 
 
 
@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Aesthetic92">
 <meta property="og:description" content="Dijkstra算法虽好，但是不能解决带负权边的图，而Bellman-Ford算法就是解决这个问题的.
 在一个含有n个顶点的图中，任意两点之间的最短路径最多包含n-1条边，最短路径中不可能包含回路.最短路径是一个不包含回路的简单路径，回路分为正权回路(回路权值之和为正)和负权回路(回路权值之和为负). 如果最短路径中包含正权回路，那么去掉这个回路，一定可以得到更短的路径；如果最短路径中包含负权回路">
-<meta property="og:updated_time" content="2016-04-24T07:27:54.614Z">
+<meta property="og:updated_time" content="2016-04-24T08:31:29.274Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bellman-Ford——解决负权边">
 <meta name="twitter:description" content="Dijkstra算法虽好，但是不能解决带负权边的图，而Bellman-Ford算法就是解决这个问题的.
@@ -288,6 +288,37 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -329,7 +360,7 @@
       
         <p><code>Dijkstra算法</code>虽好，但是不能解决带负权边的图，而<code>Bellman-Ford算法</code>就是解决这个问题的.</p>
 <p>在一个含有<code>n</code>个顶点的图中，任意两点之间的最短路径最多包含<code>n-1</code>条边，最短路径中不可能包含回路.<br>最短路径是一个不包含回路的简单路径，回路分为正权回路(回路权值之和为正)和负权回路(回路权值之和为负). 如果最短路径中包含正权回路，那么去掉这个回路，一定可以得到更短的路径；如果最短路径中包含负权回路，那么肯定没有最短路径，因为每多走一次负权回路就可以得到更短的路径. 因此最短路径肯定是一个不包含回路的最短路径，即最多包含<code>n-1</code>条边.</p>
-<p>算法的主要思想：首先<code>dis</code>数组初始化顶点u到其余各个顶点的距离为<code>∞</code>，<code>dis[u] = 0</code>. 然后每轮对输入的所有边进行松弛，更新<code>dis</code>数组，至多需要进行<code>n-1</code>可以求出顶点<code>u</code>到其余各顶点的最短路径，因为任意两点之间的最短路径最多包含<code>n-1</code>条边，所以只需要<code>n-1</code>轮就行.<br><a id="more"></a></p>
+<p>算法的主要思想：首先<code>dis</code>数组初始化顶点<code>u</code>到其余各个顶点的距离为<code>∞</code>，<code>dis[u] = 0</code>. 然后每轮对输入的所有边进行松弛，更新<code>dis</code>数组，至多需要进行<code>n-1</code>可以求出顶点<code>u</code>到其余各顶点的最短路径，因为任意两点之间的最短路径最多包含<code>n-1</code>条边，所以只需要<code>n-1</code>轮就行.<br><a id="more"></a></p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">include</span> &lt;stdio.<span class="keyword">h</span>&gt;  </span><br><span class="line">#<span class="keyword">include</span> &lt;string.<span class="keyword">h</span>&gt;  </span><br><span class="line">#<span class="keyword">include</span> &lt;stdlib.<span class="keyword">h</span>&gt;  </span><br><span class="line">  </span><br><span class="line">#define <span class="keyword">INF</span> 999999  </span><br><span class="line">int main(int argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])  </span><br><span class="line">&#123;  </span><br><span class="line">    int i, j, <span class="keyword">n</span>, <span class="keyword">m</span>;  </span><br><span class="line">    int <span class="keyword">dis</span>[10], temp[10], <span class="keyword">u</span>[10], v[10], w[10];  </span><br><span class="line">    int check, flag = 0;  </span><br><span class="line">  </span><br><span class="line">    scanf(<span class="string">"%d %d"</span>, &amp;<span class="keyword">n</span>, &amp;<span class="keyword">m</span>);  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">m</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        scanf(<span class="string">"%d %d %d"</span>, &amp;<span class="keyword">u</span>[i], &amp;v[i], &amp;w[i]);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">dis</span>[i] = <span class="keyword">INF</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">dis</span>[1] = 0;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/// Bellman-Ford算法主要代码  </span></span><br><span class="line">    <span class="keyword">for</span>(j = 1; j &lt; <span class="keyword">n</span>; ++j)     <span class="comment">/// 最多循环n-1轮  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">        &#123;  </span><br><span class="line">            temp[i] = <span class="keyword">dis</span>[i];      <span class="comment">/// 对BellmanFord优化，有可能在n-1轮松弛之前就已经计算出最短路径，所以先备份dis数组  </span></span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">m</span>; ++i)        <span class="comment">/// 最核心的3句Bellman-Ford算法  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">dis</span>[v[i]] &gt; <span class="keyword">dis</span>[<span class="keyword">u</span>[i]] + w[i])  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">dis</span>[v[i]] = <span class="keyword">dis</span>[<span class="keyword">u</span>[i]] + w[i];  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        check = 0;      <span class="comment">/// 检测dis数组是否有更新  </span></span><br><span class="line">        <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span>(temp[i] != <span class="keyword">dis</span>[i])  </span><br><span class="line">            &#123;  </span><br><span class="line">                check = 1;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span>(!check)     <span class="comment">///  没有更新则提前退出程序  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">break</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">m</span>; ++i)     <span class="comment">/// n-1次之后最短路径还会发生变化则含有负权回路  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">dis</span>[v[i]] &gt; <span class="keyword">dis</span>[<span class="keyword">u</span>[i]] + w[i])  </span><br><span class="line">        &#123;  </span><br><span class="line">            flag = 1;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span>(flag)  </span><br><span class="line">    &#123;  </span><br><span class="line">        printf(<span class="string">"负权回路"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">for</span>(i = 1; i &lt;= <span class="keyword">n</span>; ++i)  </span><br><span class="line">            &#123;  </span><br><span class="line">                printf(<span class="string">"%d "</span>, <span class="keyword">dis</span>[i]);  </span><br><span class="line">            &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    printf(<span class="string">"\n"</span>);  </span><br><span class="line">  </span><br><span class="line">    system(<span class="string">"pause"</span>);  </span><br><span class="line">    <span class="keyword">return</span> 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -369,6 +400,18 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag">#Algorithm</a>
+          
+            <a href="/tags/Bellman-Ford/" rel="tag">#Bellman-Ford</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+            <a href="/tags/负权边/" rel="tag">#负权边</a>
+          
+        </div>
       
 
       
@@ -460,7 +503,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -468,7 +511,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -477,7 +520,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
